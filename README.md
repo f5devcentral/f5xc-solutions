@@ -1,4 +1,4 @@
-[![Build the Docs](https://github.com/f5devcentral/access-solutions/actions/workflows/build-the-docs.yml/badge.svg)](https://github.com/f5devcentral/access-solutions/actions/workflows/build-the-docs.yml)
+[![Build the Docs](https://github.com/f5devcentral/f5xc-solutions/actions/workflows/build-the-docs.yml/badge.svg)](https://github.com/f5devcentral/f5xc-solutions/actions/workflows/build-the-docs.yml)
 
 # F5 Distributed Cloud Solutions
 
