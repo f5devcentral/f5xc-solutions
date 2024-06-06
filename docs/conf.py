@@ -25,7 +25,7 @@ github_repo = "https://github.com/f5devcentral/f5xc-solutions"
 sys.path.insert(0, os.path.abspath("."))
 
 year = time.strftime("%Y")
-eventname = "F5 Distributed Cloud Guides & Solutions" % (year)
+eventname = "F5 Distributed Cloud Guides & Solutions"
 
 rst_prolog = """
 .. |classname| replace:: %s
