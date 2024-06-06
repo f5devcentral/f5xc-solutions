@@ -81,7 +81,7 @@ The evolution to Web Application and API Protection (WAAP) represents a shift to
 
 Be sure to evaluate ASM Logs for WAF activity to determing which, if any policies need to be migrated.
 
-.. image:: ../images/picture17.png
+.. image:: ./images/picture17.png
    :width: 700px
    :align: center
 
@@ -106,7 +106,7 @@ If you do not have access to Policy Supervisor, you should check out the guidanc
  - https://policysupervisor.io/  
  - https://policysupervisor.io/convert  
 
- .. image:: ../images/picture18.png
+ .. image:: ./images/picture18.png
    :width: 700px
    :align: center
 
@@ -174,19 +174,19 @@ Since keep-alive and connection headers will be ignored, its important to evalua
 
 Timeouts can be configured in a a number of locations in the XC Console.  
 
-.. figure:: ../images/lb_timeout.png
+.. figure:: ./images/lb_timeout.png
    :width: 500px
    :align: center
 
    Load Balancer Timeout.
    
-.. figure:: ../images/route_timeout.png
+.. figure:: ./images/route_timeout.png
    :width: 500px
    :align: center
 
    Route Timeout.
 
-.. figure:: ../images/origin_timeout.png
+.. figure:: ./images/origin_timeout.png
    :width: 500px
    :align: center
 
@@ -369,7 +369,7 @@ Graphs
 SSL Transactions
 ^^^^^^^^^^^^^^^^
 
-.. image:: ../images/picture3.png
+.. image:: ./images/picture3.png
    :width: 700px
    :align: center
 
@@ -382,7 +382,7 @@ The sum throughput of all Traffic Management Microkernel (TMM) and Packet Veloci
 
  - Client Out: The sum of all egress traffic 
 
-.. image:: ../images/picture4.png
+.. image:: ./images/picture4.png
    :width: 700px
    :align: center
 
@@ -395,7 +395,7 @@ The sum throughput of all TMM and PVA traffic on the server side. The following 
 
  - Server Out: The sum of all ingress traffic 
 
-.. image:: ../images/picture5.png
+.. image:: ./images/picture5.png
    :width: 700px
    :align: center
 
@@ -410,7 +410,7 @@ The total throughput in and out of the BIG-IP system collected from all interfac
 
  - Service: The larger of the two values of combined client and server-side ingress traffic or egress traffic, measured within TMM. You can compare this to VE-licensed bandwidth. 
 
-.. image:: ../images/picture6.png
+.. image:: ./images/picture6.png
    :width: 700px
    :align: center
 
@@ -419,17 +419,17 @@ iRules
 
 One of the first things to evaluate with irules, is if they are even being used. An effective way to gauge that is to check the Unused Objects under the Config Explorer. So, if you have 150 total irules, but are not using 102 of them, then that means we only need to review 48 irules, and based on historical evidence, I would estimate over 75% of those are just uncustomized redirect irules. 
 
-.. image:: ../images/picture7.png
+.. image:: ./images/picture7.png
    :width: 700px
    :align: center
 
 You can also see in the specific irules how many times its even executed (if its attached) under the irules Statistics. 
 
-.. image:: ../images/picture8.png
+.. image:: ./images/picture8.png
    :width: 500px
    :align: center
 
-.. image:: ../images/picture8-a.png
+.. image:: ./images/picture8-a.png
    :width: 500px
    :align: center
 
@@ -453,7 +453,7 @@ In the example QKView I am using, there are 670 instances of “rules”, and 46
 
 Let's look at an irule example, we can see it's in use, and has had 34k executions in the past 30 days. I'm sure someone will argue the point, but this is still a redirect irule. Or you could call it an apology page. It's setting the default pool, and if there aren't any active members, sending it to another page.  
 
-.. image:: ../images/picture10.png
+.. image:: ./images/picture10.png
    :width: 700px
    :align: center
 
@@ -461,7 +461,7 @@ This is extremely easy to do with just L7 Routes, and custom error pages.
 
 In this qkview, there are mostly custom redirect irules based on host headers, over and over again.  This is a manual process, so be prepared to see a lot of redirects. 
 
-.. image:: ../images/picture11.png
+.. image:: ./images/picture11.png
    :width: 700px
    :align: center
 
@@ -469,19 +469,19 @@ Then be prepared to see a ton of custom logging or header injections. Header Ins
 
 In the case of this irule, it's just going to insert the header on every HTTP REQUEST. This is managed at the top-level Load Balancer Configs under More Options.
 
-.. image:: ../images/picture12.png
+.. image:: ./images/picture12.png
    :width: 700px
    :align: center
 
 From there you can add and remove headers to your heart's content. 
 
-.. image:: ../images/picture13.png
+.. image:: ./images/picture13.png
    :width: 700px
    :align: center
 
 If this irule had more logic, IF host header = this.domain.com, then we would use the L7 Route options. 
 
-.. image:: ../images/picture14.png
+.. image:: ./images/picture14.png
    :width: 700px
    :align: center
 
@@ -490,7 +490,7 @@ show /ltm profile http global
 
 This command will give you a quick snapshot of traffic with a virtual server with an associated HTTP profile. 
 
-.. image:: ../images/picture1.png
+.. image:: ./images/picture1.png
    :width: 700px
    :align: center
 
@@ -503,7 +503,7 @@ UNIX - TMOS - tmctl -a (blade)
 
 This gets us to the TMSTATS collections that span usually beyond the last 30 days that the RRD Graphs might show. Scroll down to the profile_http link and click it. This will give the aggregate values as well as every individual virtual server with a HTTP profile in a table format with column headers that are clickable to sort the data based on the values. Within this you will also reveal where some dormant virtuals are that do not need to be considered for migrations. 
 
-.. image:: ../images/picture9.png
+.. image:: ./images/picture9.png
    :width: 700px
    :align: center
 
@@ -544,7 +544,7 @@ If we evaluate the following example:
 
 We can use mTLS configuration to extract the X.509 Values. 
 
-.. image:: ../images/picture15.png
+.. image:: ./images/picture15.png
    :width: 700px
    :align: center
 
@@ -570,7 +570,7 @@ Matching Host Header and URI Path Example using L7 Route Configs:
      }
    }
 
-.. image:: ../images/http_request_1.png
+.. image:: ./images/http_request_1.png
    :width: 700px
    :align: center
 
@@ -590,11 +590,11 @@ If the irule also does Host rewrites to the upstream, or path rewriting, this is
      }
    }
 
-.. image:: ../images/http_request_2.png
+.. image:: ./images/http_request_2.png
    :width: 700px
    :align: center
 
-.. image:: ../images/http_request_3.png
+.. image:: ./images/http_request_3.png
    :width: 700px
    :align: center
 
@@ -698,7 +698,7 @@ Let's look at an example that captures SSL Cipher and Version:
       if {$static::payload_dbg}{log local0.debug "Connection from Client: [IP::client_addr] with Cipher: [SSL::cipher name] and SSL Version: [SSL::cipher version]"} 
    } 
 
-.. image:: ../images/picture16.png
+.. image:: ./images/picture16.png
    :width: 700px
    :align: center
 
@@ -900,7 +900,7 @@ Other Errors
 
   https://my.f5.com/manage/s/article/K98868401 
   
-  .. image:: ../images/picture19.png
+  .. image:: ./images/picture19.png
      :width: 700px
      :align: center
 

@@ -8,4 +8,3 @@ The following are step by step guides on specific F5 Distributed Cloud solution 
    :glob:
 
    guide1.rst
-   guide2.rst

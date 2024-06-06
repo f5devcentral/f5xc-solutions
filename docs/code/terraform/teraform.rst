@@ -7,8 +7,5 @@ The following are sample terraform deployments leveraging F5 Distributed Cloud S
    :maxdepth: 1
    :glob:
 
-   f5-xc-aws-ce/README.md
-   f5-xc-azure-ce/README.md
-   f5-xc-gcp-ce/README.md
-   f5-xc-modules/README.md
+
    

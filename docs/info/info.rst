@@ -7,7 +7,4 @@ The following are papers, briefs and write-ups on F5 Distributed Cloud topics th
    :maxdepth: 1
    :glob:
 
-   paper1.rst
-   paper2.rst
-   brief1.rst
-   brief2.rst
+
