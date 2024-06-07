@@ -810,17 +810,14 @@ In some cases, for troubleshooting, I can help to turn off XC Default Error Mess
 +=================+=================================================+========================================================================================================+
 |                 |                                                 | | If CSRF is enabled we compare the value of origin header against a list of allowed domains. If       | 
 |                 |                                                 | | origin is not there WAF blocks the request. Check how the POST or PUT requests are being sent.       |
-|     **403**     |   **csrf_origin_mismatch**                      |                                                                                                        | 
-|                 |                                                 |                                                                                                        |
+|     **403**     | **csrf_origin_mismatch**                        |                                                                                                        | 
 |                 |                                                 | * Is the Origin or Referer header set? Else a CSRF violation would be set.                             |
-+-----------------+-------------------------------------------------+--------------------------------------------------------------------------------------------------------+
-
 +-----------------+-------------------------------------------------+--------------------------------------------------------------------------------------------------------+
 |                 |                                                 | | XC did not find a route or domain that matches current config. It is possible that there is no       |
 |                 |                                                 | | route match (misconfiguration).                                                                      |
 |                 |                                                 |                                                                                                        |
 |                 |                                                 | * SNI at Origin Server config is wrong.                                                                |
-|     **404**     |     **route_not_found**                         | * The request fails because authority does not route match.                                            |
+|     **404**     | **route_not_found**                             | * The request fails because authority does not route match.                                            |
 |                 |                                                 | * There is no match for host header www.example.com (wildcard domains are allowed)                     |
 |                 |                                                 | * There is no match condition in any of the route objects.                                             |
 |                 |                                                 | * Request to a HTTP LB will be rejected (404) with a req_id if the incoming Host header:               |
@@ -828,44 +825,44 @@ In some cases, for troubleshooting, I can help to turn off XC Default Error Mess
 |                 |                                                 |   * Does not match any of the values configured under Domains                                          |
 |                 |                                                 |   * Does not match the CNAME value for the virtual host (ex:ves-io-<random-string>.ac.vh.volterra.us)  |
 +-----------------+-------------------------------------------------+--------------------------------------------------------------------------------------------------------+
-
+|     **408**     | **rsp_code_details=request_overall_timeout**    | Check if there is slow_ddos_mitigation with request_timeout configured.                                | 
 +-----------------+-------------------------------------------------+--------------------------------------------------------------------------------------------------------+
-|     **408**     |   **rsp_code_details=request_overall_timeout**  | Check if there is slow_ddos_mitigation with request_timeout configured.                                | 
+|     **503**     | **cluster_not_found**                           | XC did not find an endpoint to send upstream.                                                          | 
+|                 |                                                 |                                                                                                        |
+|                 |                                                 | * It is possible that there was no route match (misconfiguration)                                      |
+|                 |                                                 | * If using a k8s service as upstream, its possible the service name is wrong.                          |
 +-----------------+-------------------------------------------------+--------------------------------------------------------------------------------------------------------+
-
+|     **503**     | **upstream_reset_before_response_started**      | | One common reason would be that the firewalls would not have allow listed Regional Edge public IPs,  | 
+|                 | **{connection}**                                | | to reach upstream(s). https://docs.cloud.f5.com/docs/reference/network-cloud-ref.  Another common    |
+|                 |                                                 |                                                                                                        |
+|                 |                                                 | | Another common reason is related to connection failure after X amount of seconds the connection      |     
+|                 |                                                 | | timeout. Try to increase the connection timeout at origin pool to a higher value to overcome this.   |                      
++-----------------+-------------------------------------------------+--------------------------------------------------------------------------------------------------------+
+|     **503**     | **no_healthy_upstream**                         | | Health check on the origin pool has failed. Check health check config and the expected response      | 
+|                 |                                                 | | codes, as well as allowed IPs.                                                                       |
++-----------------+-------------------------------------------------+--------------------------------------------------------------------------------------------------------+
+|     **503**     | **via_upstream**                                | | The upstream server has generated this error code. Analysis has to be done on the endpoint. Analysis | 
+|                 |                                                 | | has to be done on the endpoint. Another recommendation in such cases is to take a pcap from the      |
+|                 |                                                 | | client to origin server and see the details of the request.                                          |
++-----------------+-------------------------------------------------+--------------------------------------------------------------------------------------------------------+
+|     **503**     | **remote_reset**                                | | Can happen if the server does not correctly work with the http(1.1 or 2). Curl to the endpoint       | 
+|                 |                                                 | | directly and see what http version works for the request and configure accordingly.                  |
++-----------------+-------------------------------------------------+--------------------------------------------------------------------------------------------------------+
+|     **503**     | **upstream_reset_before_response_started **     | | If any TLS error is seen like this, it indicates a TLS handshake failure.                            | 
+|                 | **{connection_failure, TLS_error,**             | |                                                                                                      |
+|                 | **OPENSSL_internal, Connection_reset_by_peer}** | |                                                                                                      |
++-----------------+-------------------------------------------------+--------------------------------------------------------------------------------------------------------+
+|     **503**     | **upstream_reset_before_response_started **     | | Check if SSL negotiation is working with the endpoint by doing a curl to the endpoint via https      | 
+|                 | **{connection_failure, TLS_error,**             | | directly, and ensure the proper version protocol is selected.                                        |
+|                 | **OPENSSL_internal:WRONG_VERSION_NUMBER}**      | |                                                                                                      |
++-----------------+-------------------------------------------------+--------------------------------------------------------------------------------------------------------+
+|     **503**     | **upstream_reset_before_response_started **     | | The certificate offered by the server was validated and that validation failed.                      | 
+|                 | **{connection_failure, TLS_error,**             | * In the Origin pool TLS config, skip the verification.                                                |
+|                 | **OPENSSL_internal::CERTIFICATE_VERIFY_FAILED}**| * In the Origin pool TLS config, Use a custom CA list.                                                 |
++-----------------+-------------------------------------------------+--------------------------------------------------------------------------------------------------------+
 
 503 Errors
 ----------
-
-* **cluster_not_found**: XC did not find an endpoint to send upstream. 
-
-  - It is possible that there was no route match (misconfiguration)
-  - If using a k8s service as upstream, its possible the service name is wrong.
-
-* **upstream_reset_before_response_started{connection}**: 
-
- - One common reason would be that the firewalls would not have allow listed Regional Edge public IPs, to reach upstream(s). https://docs.cloud.f5.com/docs/reference/network-cloud-ref
- - Other common reason is related to connection failure after X amount of seconds the connection timeout. Try to increase the connection timeout at origin pool to a higher value 
-   to overcome this.
-
-* **no_healthy_upstream**: Health check on the origin pool has failed. Check health check config and the expected response codes, as well as allowed IPs.
-
-* **via_upstream**: The upstream server has generated this error code. Analysis has to be done on the endpoint. Another recommendation in such cases is to take a pcap from 
-  client to origin server and see the details of the request.
-
-* **remote_reset**: Can happen if the server does not correctly work with the http(1.1 or 2). Curl to the endpoint directly and see what http version works for the request and 
-  configure accordingly.
-
-* **upstream_reset_before_response_started {connection_failure, TLS_error, OPENSSL_internal, Connection_reset_by_peer}**: If any TLS error is seen like this, it indicates a TLS 
-  handshake failure.
-
-* **upstream_reset_before_response_started{connection_failure, TLS_error, OPENSSL_internal:WRONG_VERSION_NUMBER}**: Check if SSL negotiation is working with the endpoint by doing a curl to the endpoint via https directly, 
-  and ensure the proper version protocol is selected.
-
-* **upstream_reset_before_response_started{connection_failure, TLS_error, OPENSSL_internal:CERTIFICATE_VERIFY_FAILED}**: The certificate offered by the server was validated and that validation failed. 
-
- - In the Origin pool TLS config, skip the verification.
- - In the Origin pool TLS config, Use a custom CA list.
 
 * **upstream_reset_before_response_started{connection termination}**: The upstream server is closing the connection.
 
