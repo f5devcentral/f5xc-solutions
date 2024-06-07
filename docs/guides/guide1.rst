@@ -847,19 +847,19 @@ In some cases, for troubleshooting, I can help to turn off XC Default Error Mess
 +-----------------+-------------------------------------------------+--------------------------------------------------------------------------------------------------------+
 |     **503**     | **remote_reset**                                | | Can happen if the server does not correctly work with the http(1.1 or 2). Curl to the endpoint       | 
 |                 |                                                 | | directly and see what http version works for the request and configure accordingly.                  |
-+-----------------+-------------------------------------------------+--------------------------------------------------------------------------------------------------------+
-|     **503**     | **upstream_reset_before_response_started **     | | If any TLS error is seen like this, it indicates a TLS handshake failure.                            | 
-|                 | **{connection_failure, TLS_error,**             | |                                                                                                      |
-|                 | **OPENSSL_internal, Connection_reset_by_peer}** | |                                                                                                      |
-+-----------------+-------------------------------------------------+--------------------------------------------------------------------------------------------------------+
-|     **503**     | **upstream_reset_before_response_started **     | | Check if SSL negotiation is working with the endpoint by doing a curl to the endpoint via https      | 
-|                 | **{connection_failure, TLS_error,**             | | directly, and ensure the proper version protocol is selected.                                        |
-|                 | **OPENSSL_internal:WRONG_VERSION_NUMBER}**      | |                                                                                                      |
-+-----------------+-------------------------------------------------+--------------------------------------------------------------------------------------------------------+
-|     **503**     | **upstream_reset_before_response_started **     | | The certificate offered by the server was validated and that validation failed.                      | 
-|                 | **{connection_failure, TLS_error,**             | * In the Origin pool TLS config, skip the verification.                                                |
-|                 | **OPENSSL_internal::CERTIFICATE_VERIFY_FAILED}**| * In the Origin pool TLS config, Use a custom CA list.                                                 |
-+-----------------+-------------------------------------------------+--------------------------------------------------------------------------------------------------------+
++-----------------+---------------------------------------------------+--------------------------------------------------------------------------------------------------------+
+|     **503**     | | **upstream_reset_before_response_started**      | | If any TLS error is seen like this, it indicates a TLS handshake failure.                            | 
+|                 | | **{connection_failure, TLS_error,**             | |                                                                                                      |
+|                 | | **OPENSSL_internal, Connection_reset_by_peer}** | |                                                                                                      |
++-----------------+---------------------------------------------------+--------------------------------------------------------------------------------------------------------+
+|     **503**     | | **upstream_reset_before_response_started**      | | Check if SSL negotiation is working with the endpoint by doing a curl to the endpoint via https      | 
+|                 | | **{connection_failure, TLS_error,**             | | directly, and ensure the proper version protocol is selected.                                        |
+|                 | | **OPENSSL_internal:WRONG_VERSION_NUMBER}**      | |                                                                                                      |
++-----------------+---------------------------------------------------+--------------------------------------------------------------------------------------------------------+
+|     **503**     | | **upstream_reset_before_response_started**      | | The certificate offered by the server was validated and that validation failed.                      | 
+|                 | | **{connection_failure, TLS_error,**             | * In the Origin pool TLS config, skip the verification.                                                |
+|                 | | **OPENSSL_internal::CERTIFICATE_VERIFY_FAILED}**| * In the Origin pool TLS config, Use a custom CA list.                                                 |
++-----------------+---------------------------------------------------+--------------------------------------------------------------------------------------------------------+
 
 503 Errors
 ----------

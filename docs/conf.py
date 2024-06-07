@@ -141,7 +141,7 @@ master_doc = "index"
 
 # General information about the project.
 project = classname
-copyright = "2022, F5 Networks, Inc."
+copyright = "2024, F5 Networks, Inc."
 author = "F5 Networks, Inc."
 
 # The version info for the project you're documenting, acts as replacement for
