@@ -791,33 +791,22 @@ Troubleshooting
 
 In some cases, for troubleshooting, I can help to turn off XC Default Error Messages and allow errors directly from the Upstream.
 
-.. list-table:: Response Code Errors
-   :widths: 25 25 50
-   :header-rows: 1
-
-   * - Response Code
-     - Error Message
-     - Description
-   * - 403
-     - **csrf_origin_mismatch**
-     - Row 1, column 3
-   * - 404
-     - **route_not_found**
-     - Row 2, column 3
+Response Error Codes
+--------------------
 
 +-----------------+---------------------------------------------------+--------------------------------------------------------------------------------------------------------+
-|  Response Code  |         Error Message                             |                                Description                                                             |
+|  Response Code  | Error Message                                     | Description                                                                                            |
 +=================+===================================================+========================================================================================================+
-|                 |                                                   | | If CSRF is enabled we compare the value of origin header against a list of allowed domains. If       | 
+|     **403**     | **csrf_origin_mismatch**                          | | If CSRF is enabled we compare the value of origin header against a list of allowed domains. If       | 
 |                 |                                                   | | origin is not there WAF blocks the request. Check how the POST or PUT requests are being sent.       |
-|     **403**     | **csrf_origin_mismatch**                          |                                                                                                        | 
+|                 |                                                   |                                                                                                        | 
 |                 |                                                   | * Is the Origin or Referer header set? Else a CSRF violation would be set.                             |
 +-----------------+---------------------------------------------------+--------------------------------------------------------------------------------------------------------+
-|                 |                                                   | | XC did not find a route or domain that matches current config. It is possible that there is no       |
+|     **404**     | **route_not_found**                               | | XC did not find a route or domain that matches current config. It is possible that there is no       |
 |                 |                                                   | | route match (misconfiguration).                                                                      |
 |                 |                                                   |                                                                                                        |
 |                 |                                                   | * SNI at Origin Server config is wrong.                                                                |
-|     **404**     | **route_not_found**                               | * The request fails because authority does not route match.                                            |
+|                 |                                                   | * The request fails because authority does not route match.                                            |
 |                 |                                                   | * There is no match for host header www.example.com (wildcard domains are allowed)                     |
 |                 |                                                   | * There is no match condition in any of the route objects.                                             |
 |                 |                                                   | * Request to a HTTP LB will be rejected (404) with a req_id if the incoming Host header:               |
@@ -848,59 +837,53 @@ In some cases, for troubleshooting, I can help to turn off XC Default Error Mess
 |     **503**     | **remote_reset**                                  | | Can happen if the server does not correctly work with the http(1.1 or 2). Curl to the endpoint       | 
 |                 |                                                   | | directly and see what http version works for the request and configure accordingly.                  |
 +-----------------+---------------------------------------------------+--------------------------------------------------------------------------------------------------------+
-|     **503**     | | **upstream_reset_before_response_started**      | | If any TLS error is seen like this, it indicates a TLS handshake failure.                            | 
-|                 | | **{connection_failure, TLS_error,**             | |                                                                                                      |
-|                 | | **OPENSSL_internal, Connection_reset_by_peer}** | |                                                                                                      |
+|     **503**     | | **upstream_reset_before_response_started**      | If any TLS error is seen like this, it indicates a TLS handshake failure.                              | 
+|                 | | **{connection_failure, TLS_error,**             |                                                                                                        |
+|                 | | **OPENSSL_internal, Connection_reset_by_peer}** |                                                                                                        |
 +-----------------+---------------------------------------------------+--------------------------------------------------------------------------------------------------------+
 |     **503**     | | **upstream_reset_before_response_started**      | | Check if SSL negotiation is working with the endpoint by doing a curl to the endpoint via https      | 
 |                 | | **{connection_failure, TLS_error,**             | | directly, and ensure the proper version protocol is selected.                                        |
-|                 | | **OPENSSL_internal:WRONG_VERSION_NUMBER}**      | |                                                                                                      |
+|                 | | **OPENSSL_internal:WRONG_VERSION_NUMBER}**      |                                                                                                        |
 +-----------------+---------------------------------------------------+--------------------------------------------------------------------------------------------------------+
-|     **503**     | | **upstream_reset_before_response_started**      | | The certificate offered by the server was validated and that validation failed.                      | 
+|     **503**     | | **upstream_reset_before_response_started**      | The certificate offered by the server was validated and that validation failed.                        | 
 |                 | | **{connection_failure, TLS_error,**             | * In the Origin pool TLS config, skip the verification.                                                |
 |                 | | **OPENSSL_internal::CERTIFICATE_VERIFY_FAILED}**| * In the Origin pool TLS config, Use a custom CA list.                                                 |
 +-----------------+---------------------------------------------------+--------------------------------------------------------------------------------------------------------+
-
-503 Errors
-----------
-
-* **upstream_reset_before_response_started{connection termination}**: The upstream server is closing the connection.
-
- - It is possible that the upstream server is overloaded by the requests and unable to handle it. Check response time value.
- - It is possible that on the server, the http idle timeout can be lesser than the idle-timeout on the origin-pool. It is strongly recommended that the origin-pool idle-timeout be configured to be less than that on the server.
-
-* **upstream_reset_before_response_started{protocol_error}**: 
-
-  - Check if the http response headers from the origin-server have any invalid field names. Query to the origin-server directly via curl or something equivalent.
-    Usually indicates that XC is seeing an error in one of the http-headers of the response from the server. We would need to see the http-headers that the origin-server 
-    is responding with to identify the issue.
-  - In one of the scenarios, it was seen that the origin-server may have a total of more than 100 headers(mostly duplciate headers), which XC will treat as failure parsing 
-    the response.
-
-* **upstream_reset_before_response_started{connection_failure,delayed_connect_error:_111}**: No TCP SYN-ACKs seen for the TCP connection attempts to the endpoints. 
-
- - The time_to_last_downstream_tx_byte would usually show some x seconds, and the other time_to_last_* fields would be 0 in this case
-
-* **upstream_reset_before_response_started{connection_termination}**: This error is due to server closing the connection while connection pool is still active.
-
- - Match the connection idle timeout between XC origin pool and Server. [Keep XC origin pool idle timeout a few seconds lesser than than the server timeout].
- - Apply retry policy for 5xx error. Packet capture if the issue still persists after applying above config changes.
-
-* **upstream_reset_before_response_started{remote_refused_stream_reset}**: This error currently requires a tcpdump to troubleshoot.
-
-504 Errors
-----------
-
-* **stream_idle_timeout**: Origin server took more than the idle timeout configured to respond to the request. 
-
- - Increase the idle timeout on the HTTP LB.
-
-* **upstream_response_timeout**: Origin server took more time than the timeout configured on the route in the Loadbalancer. 
-
- - Increase the timeout in the miscellaneous options of the route (default 30 seconds)
-
- .. note:: Note that this response code may be seen due to TCP Connection timeout towards the upstream. It will happen in cases where the route timeout has a lower value 
-    than connection timeout configured on the upstream origin pool.
+|     **503**     | | **upstream_reset_before_response_started**      | The upstream server is closing the connection.  It is possible that the upstream server :              | 
+|                 | | **{connection termination}**                    | * Is overloaded by the requests and unable to handle it. Check response time value.                    |
+|                 | | **OPENSSL_internal::CERTIFICATE_VERIFY_FAILED}**| * Has a http idle timeout can be lesser than the idle-timeout on the origin-pool.                      |
+|                 |                                                   | The origin-pool idle-timeout must be configured to be less than that on the server.                    |
++-----------------+---------------------------------------------------+--------------------------------------------------------------------------------------------------------+
+|     **503**     | | **upstream_reset_before_response_started**      | | Check if the http response headers from the origin-server have any invalid field names. Query the    | 
+|                 | | **{protocol_error}**                            | | the origin-server directly via curl or something equivalent. Usually indicates that XC is seeing an  |
+|                 |                                                   | | error in one of the http-headers of the response from the server. We would need to see the http      |
+|                 |                                                   | | headers that the origin-server is responding with to identify the issue.                             |
+|                 |                                                   | |                                                                                                      |
+|                 |                                                   | | In one of the scenarios, it was seen that the origin-server may have a total of more than 100 headers|
+|                 |                                                   | | (mostly duplicate headers), which XC will treat as failure parsing the response.                     |
++-----------------+---------------------------------------------------+--------------------------------------------------------------------------------------------------------+
+|     **503**     | | **upstream_reset_before_response_started**      | | No TCP SYN-ACKs seen for the TCP connection attempts to the endpoints.                               |
+|                 | | **{connection_failure,**                        | | The time_to_last_downstream_tx_byte would usually show some x seconds, and the other *time_to_last_* |
+|                 | | **delayed_connect_error:_111}**                 | | fields would be 0 in this case.                                                                      |
++-----------------+---------------------------------------------------+--------------------------------------------------------------------------------------------------------+
+|     **503**     | | **upstream_reset_before_response_started**      | This error is due to server closing the connection while connection pool is still active.              |
+|                 | | **{connection_termination}**                    | * Match the connection idle timeout between XC origin pool and Server.                                 |
+|                 | |                                                 | * Keep XC origin pool idle timeout a few seconds lesser than than the server timeout                   |
+|                 | |                                                 | * Apply retry policy for 5xx error.                                                                    |
+|                 | |                                                 | Packet capture if the issue still persists after applying above config changes.                        |
++-----------------+---------------------------------------------------+--------------------------------------------------------------------------------------------------------+
+|     **503**     | | **upstream_reset_before_response_started**      | This error currently requires a Packet Capture (tcpdump) to troubleshoot.                              |
+|                 | | **{remote_refused_stream_reset}**               |                                                                                                        |
++-----------------+---------------------------------------------------+--------------------------------------------------------------------------------------------------------+
+|     **504**     | | **stream_idle_timeout**                         | |  Origin server took more than the idle timeout configured to respond to the request. Increase the    |
+|                 | |                                                 | |  idle timeout on the HTTP LB.                                                                        |
++-----------------+---------------------------------------------------+--------------------------------------------------------------------------------------------------------+
+|     **504**     | | **stream_idle_timeout**                         | |  Origin server took more time than the timeout configured on the route in the Loadbalancer. Increase |
+|                 | |                                                 | |  the timeout in the miscellaneous options of the route (default 30 seconds)                          |
++-----------------+---------------------------------------------------+--------------------------------------------------------------------------------------------------------+
+|     **504**     | .. note:: Note that this response code may be seen due to TCP Connection timeout towards the upstream. It will happen in cases where the route timeout has |
+|                 |           a lower value than connection timeout configured on the upstream origin pool.                                                                    |
++-----------------+------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 Other Errors
 ------------
