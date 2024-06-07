@@ -822,8 +822,8 @@ In some cases, for troubleshooting, I can help to turn off XC Default Error Mess
 |                 |                                                 | * An incoming request to a HTTP LB will be rejected with a 404 error and req_id if the incoming Host header does not match any of: |
 |                 |                                                 |   * The values configured under Domains                                                                                            |
 |                 |                                                 |   * The CNAME record value for the virtual host, e.g. ves-io-<random-string>.ac.vh.volterra.us                                     |
-+=================+=================================================+====================================================================================================================================+
-|     **403**     |   **rsp_code_details=request_overall_timeout**  | Check if there is slow_ddos_mitigation with request_timeout configured.                                                            | 
++-----------------+-------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
+|     **408**     |   **rsp_code_details=request_overall_timeout**  | Check if there is slow_ddos_mitigation with request_timeout configured.                                                            | 
 +-----------------+-------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
 
 408 Errors
