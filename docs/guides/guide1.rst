@@ -36,7 +36,7 @@ This is a list of use-cases that can be used to immediately disqualify a migrati
 
 #. NTLM
 
-.. warning:: With the deprecation of NTLM Announced by Microsoft, it is recommend that all customers move to Kerberos, if at all possible.
+   .. warning:: With the deprecation of NTLM Announced by Microsoft, it is recommend that all customers move to Kerberos, if at all possible.
 
 Tools
 ~~~~~
