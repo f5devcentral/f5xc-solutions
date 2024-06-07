@@ -1,8 +1,3 @@
-.. BIG-IP to XC documentation master file, created by
-   sphinx-quickstart on Fri Apr 26 17:06:53 2024.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
-
 BIG-IP To Distributed Cloud Conversion Frequently Asked Questions and Tips
 ==========================================================================
 
