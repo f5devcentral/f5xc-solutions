@@ -4,26 +4,26 @@ BIG-IP To Distributed Cloud Conversion Frequently Asked Questions and Tips
 .. _disclaimer:
 
 Disclaimer
-==========
+~~~~~~~~~~
 
 Please note that this FAQ document is intended as a general guide and is not exhaustive. While we strive to provide accurate and up-to-date information, the rapidly evolving nature of cloud technologies means that specific details may change over time. Therefore, this guide should not be considered a substitute for professional advice or detailed consultation relevant to your specific circumstances.
 
 .. _introduction:
 
 Introduction
-============
+~~~~~~~~~~~~
 
 This semi-comprehensive guide is designed to streamline your migration from F5 BIG-IP to F5 Distributed Cloud.  This document aims to address frequently asked questions that arise during the migration process, offering clear, concise answers and practical insights to ensure a smooth transition.
 
 Contributing
-============
+~~~~~~~~~~~~
 
 Github: https://github.com/Mikej81/bigip_to_xc_faq
 
 .. _disqualifiers:
 
 Disqualifiers
-=============
+~~~~~~~~~~~~~
 
 This is a list of use-cases that can be used to immediately disqualify a migration, with some caveats. There are service chaining use-cases that could still work, or ways to implement policies to redirect traffic to a BIG-IP instead of XC, or ways to inline NGINX into XC to carry out many of the same effects.
 
@@ -39,7 +39,7 @@ This is a list of use-cases that can be used to immediately disqualify a migrati
 .. warning:: With the deprecation of NTLM Announced by Microsoft, it is recommend that all customers move to Kerberos, if at all possible.
 
 Tools
-=====
+~~~~~
 
 The following are tools available to use today.  It's important to note that none of these tools are 100%. It is highly recommended to work with an XC Specialist to help in migration from other platforms to XC.
 
@@ -57,7 +57,7 @@ The following are tools available to use today.  It's important to note that non
 - Domain Keep-Alive Analyzer: `Domain Keep-Alive Analyzer <Domain Keep-Alive Analyzer_>`_
 
 Access Policy Manager
-=====================
+~~~~~~~~~~~~~~~~~~~~~
 
 APM services are not supported in Distrubuted Cloud today, but Service/Proxy chaining is supported.
 
@@ -65,7 +65,7 @@ APM services are not supported in Distrubuted Cloud today, but Service/Proxy cha
 
 
 AWAF to WAAP
-============
+~~~~~~~~~~~~
 
 .. note:: While we understand that some organizations have spend years, and even decades tuning a WAF policy, the recommended best practice when moving to Distributed Cloud WAAP is to start with the default recommendations, and tune from there.
    Service Policies will cover traditional IP blocks as well as additional IP-Geo, and additional allow/deny rules.  
@@ -85,7 +85,7 @@ Check ASM Logs for activity.
 The best way to streamline the AWAF to XC WAAP policy is to use Policy Supervisor.
 
 Bot Defense 
-----------------------
+-----------
 
 Bot Defense is likely to require XC Bot Defense Standard at a minimum, or Advanced. XC WAAP contains only Bot Signatures. A simple alternative could be XC JavaScript Challenge, which might not meet your security requirements.
 
@@ -106,7 +106,7 @@ If you do not have access to Policy Supervisor, you should check out the guidanc
    :align: center
 
 Local Traffic Manager
-=====================
+~~~~~~~~~~~~~~~~~~~~~
 
 There are very few disqualifiers for LTM.
 
@@ -122,12 +122,12 @@ There are very few disqualifiers for LTM.
 #. OneConnect
 
 DNS
-===
+~~~
 
 Distributed Cloud DNS supports Primary, Secondary, and DNS Load Balancing.  The base format for zones is JSON/YAML, and in some cases cannot be directly imported.
 
 APM to Distributed Cloud (Service Chaining)
-===========================================
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 We covered the disqualifiers, but there are some that will work fine, like service chaining for Federation, or header validation.
 
@@ -137,7 +137,7 @@ API Security
 So secure...
 
 LTM to Load Balancing as a Service
-==================================
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Most services will move to Distributed Cloud fairly easily.
 
@@ -356,7 +356,7 @@ For instance, if you need to activate a service policy or a network firewall rul
                      curl -s -X ${API_METHOD} -H 'Content-Type: application/json' -H "Authorization: ${API_TOKEN}" "${API_URI}"
 
 QKView - iHealth
-================
+~~~~~~~~~~~~~~~~
 
 Graphs
 ------
@@ -737,7 +737,7 @@ Pool Selection Based on URI:  https://github.com/Mikej81/xc-app-services-tf/blob
 
 
 Customer Edge
-=============
+~~~~~~~~~~~~~
 
 A Customer Edge is a Replica of an F5 Distributed Cloud Regional Edge, on a customer site.  It will fit into almost any form factor
 and will extend the F5 Global Fabric to the edge location for use in multi-cloud network and multi-cloud application use-cases.
@@ -787,7 +787,7 @@ If you decide to enable VRRP for a cluster, the following should be evaluated to
      execcli vifdump -i 15 -nnve vrrp and not host [ip-of-ce-node]
 
 Troubleshooting
-===============
+~~~~~~~~~~~~~~~
 
 In some cases, for troubleshooting, I can help to turn off XC Default Error Messages and allow errors directly from the Upstream.
 
@@ -912,7 +912,7 @@ Important Request Log Fields
 * **duration_with_no_data_tx_delay = time_to_first_downstream_tx_byte - time_to_first_upstream_tx_byte**: Similar to duration_with_data_tx_delay , except that reference is taken from the moment first byte is sent to client		
 
 Terminology
-===========
+~~~~~~~~~~~
 
 * AWAF: Advanced Web Application Firewall
 
