@@ -5,7 +5,7 @@ div.section table, td
 
 div.section tbody, tr, td
 {
-//  border: 1px; 
+  border: 1px; 
 }
 
 div.section thead, th
