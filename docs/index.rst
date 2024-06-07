@@ -14,7 +14,7 @@ Solutions, Guides & Documentation
    :glob:
    
    info/info*
-   guides/guides*
+   guides/guide*
 
 Code & Automation Examples 
 ---------------------------
