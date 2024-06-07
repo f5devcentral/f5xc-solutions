@@ -13,8 +13,8 @@ Solutions, Guides & Documentation
    :maxdepth: 2
    :glob:
    
-   docs/info/info.rst
-   docs/guides/guides.rst
+   info/info.rst
+   guides/guides.rst
 
 Code & Automation Examples 
 ---------------------------
