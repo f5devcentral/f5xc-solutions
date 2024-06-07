@@ -805,35 +805,34 @@ In some cases, for troubleshooting, I can help to turn off XC Default Error Mess
      - **route_not_found**
      - Row 2, column 3
 
-+-----------------+-------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
-|  Response Code  |         Error Message                           |                                Description                                                                                         |
-+=================+=================================================+====================================================================================================================================+
-|                 |                                                 | | If CSRF is enabled we compare the value of origin header against a list of allowed domains. If                                   | 
-|                 |                                                 | | origin is not there WAF blocks the request. Check how the POST or PUT requests are being sent.                                   |
-|     **403**     |   **csrf_origin_mismatch**                      |                                                                                                                                    | 
-|                 |                                                 |                                                                                                                                    |
-|                 |                                                 | * Is the Origin or Referer header set? Else a CSRF violation would be set.                                                         |
-+-----------------+-------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
-+-----------------+-------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
-|                 |                                                 | | XC did not find a route or domain that matches current config. It is possible that there is no                                   |
-|                 |                                                 | | route match (misconfiguration).                                                                                                  |
-|                 |                                                 |                                                                                                                                    |
-|                 |                                                 | * SNI at Origin Server config is wrong.                                                                                            |
-|     **404**     |     **route_not_found**                         | * The request fails because authority does not route match.                                                                        |
-|                 |                                                 | * There is not match for host header www.example.com OR match condition in any of the route objects.                               |
-|                 |                                                 | |  did you indent properly                                                                                                         |
-|                 |                                                 | * Requests to the LB's CNAME with either the exact or wildcard domain names are allowed. Others are returned a 404.                |
-|                 |                                                 | * An incoming request to a HTTP LB will be rejected with a 404 error and req_id if the incoming Host header does not match any of: |
-|                 |                                                 |   - The values configured under Domains                                                                                            |
-|                 |                                                 |   - The CNAME record value for the virtual host, e.g. ves-io-<random-string>.ac.vh.volterra.us                                     |
-+-----------------+-------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
-|     **408**     |   **rsp_code_details=request_overall_timeout**  | Check if there is slow_ddos_mitigation with request_timeout configured.                                                            | 
-+-----------------+-------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
++-----------------+-------------------------------------------------+--------------------------------------------------------------------------------------------------------+
+|  Response Code  |         Error Message                           |                                Description                                                             |
++=================+=================================================+========================================================================================================+
+|                 |                                                 | | If CSRF is enabled we compare the value of origin header against a list of allowed domains. If       | 
+|                 |                                                 | | origin is not there WAF blocks the request. Check how the POST or PUT requests are being sent.       |
+|     **403**     |   **csrf_origin_mismatch**                      |                                                                                                        | 
+|                 |                                                 |                                                                                                        |
+|                 |                                                 | * Is the Origin or Referer header set? Else a CSRF violation would be set.                             |
++-----------------+-------------------------------------------------+--------------------------------------------------------------------------------------------------------+
 
-408 Errors
-----------
++-----------------+-------------------------------------------------+--------------------------------------------------------------------------------------------------------+
+|                 |                                                 | | XC did not find a route or domain that matches current config. It is possible that there is no       |
+|                 |                                                 | | route match (misconfiguration).                                                                      |
+|                 |                                                 |                                                                                                        |
+|                 |                                                 | * SNI at Origin Server config is wrong.                                                                |
+|     **404**     |     **route_not_found**                         | * The request fails because authority does not route match.                                            |
+|                 |                                                 | * There is no match for host header www.example.com (wildcard domains are allowed)                     |
+|                 |                                                 | * There is no match condition in any of the route objects.                                             |
+|                 |                                                 | * Request to a HTTP LB will be rejected (404) with a req_id if the incoming Host header:               |
+|                 |                                                 |                                                                                                        |
+|                 |                                                 |   * Does not match any of the values configured under Domains                                          |
+|                 |                                                 |   * Does not match the CNAME value for the virtual host (ex:ves-io-<random-string>.ac.vh.volterra.us)  |
++-----------------+-------------------------------------------------+--------------------------------------------------------------------------------------------------------+
 
-* **rsp_code_details=request_overall_timeout**: check if there is slow_ddos_mitigation with request_timeout configured. 
++-----------------+-------------------------------------------------+--------------------------------------------------------------------------------------------------------+
+|     **408**     |   **rsp_code_details=request_overall_timeout**  | Check if there is slow_ddos_mitigation with request_timeout configured.                                | 
++-----------------+-------------------------------------------------+--------------------------------------------------------------------------------------------------------+
+
 
 503 Errors
 ----------
