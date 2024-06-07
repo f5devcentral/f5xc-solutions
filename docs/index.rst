@@ -1,5 +1,5 @@
-F5 Distributed Cloud Solutions
-==============================
+F5 Distributed Cloud Guides & Solutions
+=======================================
 
 The documentation and code examples provided herein are to assist F5 Distributed Cloud users for the given scenarios detailed.
 
@@ -10,7 +10,7 @@ Solutions, Guides & Documentation
 ---------------------------------
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
    :glob:
    
    info/info*
