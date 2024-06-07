@@ -791,6 +791,16 @@ Troubleshooting
 
 In some cases, for troubleshooting, I can help to turn off XC Default Error Messages and allow errors directly from the Upstream.
 
++-----------------+-----------------------------+-----------------------------------------------------------------------------+
+|  Response Code  |         Error Message       |                                Description                                  |
++-----------------+-----------------------------+-----------------------------------------------------------------------------+
+|                 |                             |  If CSRF is enabled we compare the value of origin header against a list    |
+|                 |                             |  of allowed domains.|If origin is not there WAF blocks the request. Check   | 
+|       403       |   **csrf_origin_mismatch**  |  how the POST or PUT requests are being sent.                               |
+|                 |                             |                                                                             |
+|                 |                             |  * Is the Origin or Referer header set? Else a CSRF violation would be set. |
++-----------------+-----------------------------+-----------------------------------------------------------------------------+
+
 403 Errors
 ----------
 
@@ -894,10 +904,8 @@ Other Errors
 * Refused to execute script from 'https://exampl.com/Errors/GlobalExceptionHandler.aspx?aspxerrorpath=/WebResource.axd' because its MIME type ('text/html') is not executable, and strict MIME type checking is enabled. 
 
   https://my.f5.com/manage/s/article/K98868401 
-  
-  .. image:: ./images/picture19.png
-     :width: 700px
-     :align: center
+
+  |img019|  
 
 Important Request Log Fields
 ----------------------------
@@ -925,3 +933,7 @@ Terminology
 * WAAP: Web Application & API Protection
 
 * XC: F5 Distributed Cloud
+
+.. |img019| image:: ./images/picture19.png
+   :width: 700px
+   :align: center
