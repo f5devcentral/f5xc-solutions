@@ -13,8 +13,8 @@ Solutions, Guides & Documentation
    :maxdepth: 2
    :glob:
    
-   info/info.rst
-   guides/guides.rst
+   info/info*
+   guides/guides*
 
 Code & Automation Examples 
 ---------------------------
@@ -23,7 +23,7 @@ Code & Automation Examples
    :maxdepth: 2
    :glob:
    
-   code/api/api.rst
-   code/terraform/terraform.rst
-   code/postman/postman.rst
+   code/api/api*
+   code/terraform/terraform*
+   code/postman/postman*
 
