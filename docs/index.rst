@@ -10,7 +10,7 @@ Solutions, Guides & Documentation
 ---------------------------------
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
    :glob:
    
    docs/info/info.rst
@@ -20,7 +20,7 @@ Code & Automation Examples
 ---------------------------
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
    :glob:
    
    code/api/api.rst
