@@ -175,12 +175,12 @@ html_sidebars = {
 # "<project> v<release> documentation" by default.
 #
 #html_title = 'F5 Container Connectors'
-html_title = 'F5 Access Solutions'
+html_title = 'F5 Distributed Cloud Guides & Solutions'
 
 # A shorter title for the navigation bar.  Default is the same as html_title.
 #
 #html_short_title = 'Container Connectors Home'
-html_short_title = 'Access Solutions Home'
+html_short_title = 'F5XC Guides & Solutions Home'
 
 # The name of an image file (relative to this directory) to place at the top
 # of the sidebar.
