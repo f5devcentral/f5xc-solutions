@@ -805,15 +805,15 @@ In some cases, for troubleshooting, I can help to turn off XC Default Error Mess
      - **route_not_found**
      - Row 2, column 3
 
-+-----------------+-----------------------------+-----------------------------------------------------------------------------+
-|  Response Code  |         Error Message       |                                Description                                  |
-+=================+=============================+=============================================================================+
-|                 |                             |  If CSRF is enabled we compare the value of origin header against a list    |
-|                 |                             |  of allowed domains. If origin is not there WAF blocks the request. Check   | 
-|       403       |   **csrf_origin_mismatch**  |  how the POST or PUT requests are being sent.                               |
-|                 |                             |                                                                             |
-|                 |                             |  * Is the Origin or Referer header set? Else a CSRF violation would be set. |
-+-----------------+-----------------------------+-----------------------------------------------------------------------------+
++-----------------+-----------------------------+------------------------------------------------------------------------------+
+|  Response Code  |         Error Message       |                                Description                                   |
++=================+=============================+==============================================================================+
+|                 |                             | | If CSRF is enabled we compare the value of origin header against a list    |
+|                 |                             | | of allowed domains. If origin is not there WAF blocks the request. Check   | 
+|       403       |   **csrf_origin_mismatch**  | | how the POST or PUT requests are being sent.                               |
+|                 |                             |                                                                              |
+|                 |                             |  * Is the Origin or Referer header set? Else a CSRF violation would be set.  |
++-----------------+-----------------------------+------------------------------------------------------------------------------+
 
 403 Errors
 ----------
