@@ -813,6 +813,7 @@ In some cases, for troubleshooting, I can help to turn off XC Default Error Mess
 |                 |                                                 |                                                                                                                                    |
 |                 |                                                 | * Is the Origin or Referer header set? Else a CSRF violation would be set.                                                         |
 +-----------------+-------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
++-----------------+-------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
 |                 |                                                 | XC did not find a route or domain that matches current config. It is possible that there is no route match (misconfiguration).     |
 |                 |                                                 |                                                                                                                                    |
 |                 |                                                 | * SNI at Origin Server config is wrong.                                                                                            |
@@ -820,8 +821,8 @@ In some cases, for troubleshooting, I can help to turn off XC Default Error Mess
 |                 |                                                 | * There is not match for host header www.example.com OR match condition in any of the route objects.                               |
 |                 |                                                 | * Requests to the LB's CNAME with either the exact or wildcard domain names are allowed. Others are returned a 404.                |
 |                 |                                                 | * An incoming request to a HTTP LB will be rejected with a 404 error and req_id if the incoming Host header does not match any of: |
-|                 |                                                 |   * The values configured under Domains                                                                                            |
-|                 |                                                 |   * The CNAME record value for the virtual host, e.g. ves-io-<random-string>.ac.vh.volterra.us                                     |
+|                 |                                                 | |  * The values configured under Domains                                                                                           |
+|                 |                                                 | |  * The CNAME record value for the virtual host, e.g. ves-io-<random-string>.ac.vh.volterra.us                                    |
 +-----------------+-------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
 |     **408**     |   **rsp_code_details=request_overall_timeout**  | Check if there is slow_ddos_mitigation with request_timeout configured.                                                            | 
 +-----------------+-------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
