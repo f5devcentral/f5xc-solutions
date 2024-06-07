@@ -503,7 +503,7 @@ This gets us to the TMSTATS collections that span usually beyond the last 30 day
    :align: center
 
 iRules
-======
+~~~~~~
 
 If not clear, any irules that are performing redirects, header additions, rewrites, or appending values are easily migrated to L7 Routes. If the irules requires things like binary scan, that is something XC does not support today. 
 
@@ -797,9 +797,9 @@ Response Error Codes
 +-----------------+---------------------------------------------------+--------------------------------------------------------------------------------------------------------+
 |  Response Code  | Error Message                                     | Description                                                                                            |
 +=================+===================================================+========================================================================================================+
-|     **403**     | **csrf_origin_mismatch**                          | | If CSRF is enabled we compare the value of origin header against a list of allowed domains. If       | 
+|     **403**     | **csrf_origin_mismatch**                          | | If CSRF is enabled we compare the value of origin header against a list of allowed domains. If       |
 |                 |                                                   | | origin is not there WAF blocks the request. Check how the POST or PUT requests are being sent.       |
-|                 |                                                   |                                                                                                        | 
+|                 |                                                   |                                                                                                        |
 |                 |                                                   | * Is the Origin or Referer header set? Else a CSRF violation would be set.                             |
 +-----------------+---------------------------------------------------+--------------------------------------------------------------------------------------------------------+
 |     **404**     | **route_not_found**                               | | XC did not find a route or domain that matches current config. It is possible that there is no       |
@@ -814,47 +814,50 @@ Response Error Codes
 |                 |                                                   |   * Does not match any of the values configured under Domains                                          |
 |                 |                                                   |   * Does not match the CNAME value for the virtual host (ex:ves-io-<random-string>.ac.vh.volterra.us)  |
 +-----------------+---------------------------------------------------+--------------------------------------------------------------------------------------------------------+
-|     **408**     | **rsp_code_details=request_overall_timeout**      | Check if there is slow_ddos_mitigation with request_timeout configured.                                | 
+|     **408**     | **rsp_code_details=request_overall_timeout**      | Check if there is slow_ddos_mitigation with request_timeout configured.                                |
 +-----------------+---------------------------------------------------+--------------------------------------------------------------------------------------------------------+
-|     **503**     | **cluster_not_found**                             | XC did not find an endpoint to send upstream.                                                          | 
+|     **503**     | **cluster_not_found**                             | | XC did not find an endpoint to send upstream.                                                        |
 |                 |                                                   |                                                                                                        |
 |                 |                                                   | * It is possible that there was no route match (misconfiguration)                                      |
 |                 |                                                   | * If using a k8s service as upstream, its possible the service name is wrong.                          |
 +-----------------+---------------------------------------------------+--------------------------------------------------------------------------------------------------------+
-|     **503**     | **upstream_reset_before_response_started**        | | One common reason would be that the firewalls would not have allow listed Regional Edge public IPs,  | 
+|     **503**     | **upstream_reset_before_response_started**        | | One common reason would be that the firewalls would not have allow listed Regional Edge public IPs,  |
 |                 | **{connection}**                                  | | to reach upstream(s). https://docs.cloud.f5.com/docs/reference/network-cloud-ref.  Another common    |
-|                 |                                                   |                                                                                                        |
-|                 |                                                   | | Another common reason is related to connection failure after X amount of seconds the connection      |     
-|                 |                                                   | | timeout. Try to increase the connection timeout at origin pool to a higher value to overcome this.   |                      
+|                 |                                                   | |                                                                                                      |
+|                 |                                                   | | Another common reason is related to connection failure after X amount of seconds the connection      |
+|                 |                                                   | | timeout. Try to increase the connection timeout at origin pool to a higher value to overcome this.   |
 +-----------------+---------------------------------------------------+--------------------------------------------------------------------------------------------------------+
-|     **503**     | **no_healthy_upstream**                           | | Health check on the origin pool has failed. Check health check config and the expected response      | 
+|     **503**     | **no_healthy_upstream**                           | | Health check on the origin pool has failed. Check health check config and the expected response      |
 |                 |                                                   | | codes, as well as allowed IPs.                                                                       |
 +-----------------+---------------------------------------------------+--------------------------------------------------------------------------------------------------------+
-|     **503**     | **via_upstream**                                  | | The upstream server has generated this error code. Analysis has to be done on the endpoint. Analysis | 
+|     **503**     | **via_upstream**                                  | | The upstream server has generated this error code. Analysis has to be done on the endpoint. Analysis |
 |                 |                                                   | | has to be done on the endpoint. Another recommendation in such cases is to take a pcap from the      |
 |                 |                                                   | | client to origin server and see the details of the request.                                          |
 +-----------------+---------------------------------------------------+--------------------------------------------------------------------------------------------------------+
-|     **503**     | **remote_reset**                                  | | Can happen if the server does not correctly work with the http(1.1 or 2). Curl to the endpoint       | 
+|     **503**     | **remote_reset**                                  | | Can happen if the server does not correctly work with the http(1.1 or 2). Curl to the endpoint       |
 |                 |                                                   | | directly and see what http version works for the request and configure accordingly.                  |
 +-----------------+---------------------------------------------------+--------------------------------------------------------------------------------------------------------+
-|     **503**     | | **upstream_reset_before_response_started**      | If any TLS error is seen like this, it indicates a TLS handshake failure.                              | 
+|     **503**     | | **upstream_reset_before_response_started**      | | If any TLS error is seen like this, it indicates a TLS handshake failure.                            |
 |                 | | **{connection_failure, TLS_error,**             |                                                                                                        |
 |                 | | **OPENSSL_internal, Connection_reset_by_peer}** |                                                                                                        |
 +-----------------+---------------------------------------------------+--------------------------------------------------------------------------------------------------------+
-|     **503**     | | **upstream_reset_before_response_started**      | | Check if SSL negotiation is working with the endpoint by doing a curl to the endpoint via https      | 
+|     **503**     | | **upstream_reset_before_response_started**      | | Check if SSL negotiation is working with the endpoint by doing a curl to the endpoint via https      |
 |                 | | **{connection_failure, TLS_error,**             | | directly, and ensure the proper version protocol is selected.                                        |
 |                 | | **OPENSSL_internal:WRONG_VERSION_NUMBER}**      |                                                                                                        |
 +-----------------+---------------------------------------------------+--------------------------------------------------------------------------------------------------------+
-|     **503**     | | **upstream_reset_before_response_started**      | The certificate offered by the server was validated and that validation failed.                        | 
-|                 | | **{connection_failure, TLS_error,**             | * In the Origin pool TLS config, skip the verification.                                                |
-|                 | | **OPENSSL_internal::CERTIFICATE_VERIFY_FAILED}**| * In the Origin pool TLS config, Use a custom CA list.                                                 |
+|     **503**     | | **upstream_reset_before_response_started**      | | The certificate offered by the server was validated and that validation failed.                      |
+|                 | | **{connection_failure, TLS_error,**             |                                                                                                        |
+|                 | | **OPENSSL_internal::CERTIFICATE_VERIFY_FAILED}**| * In the Origin pool TLS config, skip the verification.                                                |
+|                 | |                                                 | * In the Origin pool TLS config, Use a custom CA list.                                                 |
 +-----------------+---------------------------------------------------+--------------------------------------------------------------------------------------------------------+
-|     **503**     | | **upstream_reset_before_response_started**      | The upstream server is closing the connection.  It is possible that the upstream server :              | 
-|                 | | **{connection termination}**                    | * Is overloaded by the requests and unable to handle it. Check response time value.                    |
-|                 | | **OPENSSL_internal::CERTIFICATE_VERIFY_FAILED}**| * Has a http idle timeout can be lesser than the idle-timeout on the origin-pool.                      |
-|                 |                                                   | The origin-pool idle-timeout must be configured to be less than that on the server.                    |
+|     **503**     | | **upstream_reset_before_response_started**      | | The upstream server is closing the connection.  It is possible that the upstream server :            |
+|                 | | **{connection termination}**                    |                                                                                                        |
+|                 | | **OPENSSL_internal::CERTIFICATE_VERIFY_FAILED}**| * Is overloaded by the requests and unable to handle it. Check response time value.                    |
+|                 |                                                   | * Has a http idle timeout can be lesser than the idle-timeout on the origin-pool.                      |
+|                 |                                                   |                                                                                                        |
+|                 |                                                   | | The origin-pool idle-timeout must be configured to be less than that on the server.                  |
 +-----------------+---------------------------------------------------+--------------------------------------------------------------------------------------------------------+
-|     **503**     | | **upstream_reset_before_response_started**      | | Check if the http response headers from the origin-server have any invalid field names. Query the    | 
+|     **503**     | | **upstream_reset_before_response_started**      | | Check if the http response headers from the origin-server have any invalid field names. Query the    |
 |                 | | **{protocol_error}**                            | | the origin-server directly via curl or something equivalent. Usually indicates that XC is seeing an  |
 |                 |                                                   | | error in one of the http-headers of the response from the server. We would need to see the http      |
 |                 |                                                   | | headers that the origin-server is responding with to identify the issue.                             |
@@ -866,13 +869,15 @@ Response Error Codes
 |                 | | **{connection_failure,**                        | | The time_to_last_downstream_tx_byte would usually show some x seconds, and the other *time_to_last_* |
 |                 | | **delayed_connect_error:_111}**                 | | fields would be 0 in this case.                                                                      |
 +-----------------+---------------------------------------------------+--------------------------------------------------------------------------------------------------------+
-|     **503**     | | **upstream_reset_before_response_started**      | This error is due to server closing the connection while connection pool is still active.              |
-|                 | | **{connection_termination}**                    | * Match the connection idle timeout between XC origin pool and Server.                                 |
-|                 | |                                                 | * Keep XC origin pool idle timeout a few seconds lesser than than the server timeout                   |
-|                 | |                                                 | * Apply retry policy for 5xx error.                                                                    |
-|                 | |                                                 | Packet capture if the issue still persists after applying above config changes.                        |
+|     **503**     | | **upstream_reset_before_response_started**      | | This error is due to server closing the connection while connection pool is still active.            |
+|                 | | **{connection_termination}**                    |                                                                                                        |
+|                 |                                                   | * Match the connection idle timeout between XC origin pool and Server.                                 |
+|                 |                                                   | * Keep XC origin pool idle timeout a few seconds lesser than than the server timeout                   |
+|                 |                                                   | * Apply retry policy for 5xx error.                                                                    |
+|                 |                                                   |                                                                                                        |
+|                 |                                                   | | Packet capture if the issue still persists after applying above config changes.                      |
 +-----------------+---------------------------------------------------+--------------------------------------------------------------------------------------------------------+
-|     **503**     | | **upstream_reset_before_response_started**      | This error currently requires a Packet Capture (tcpdump) to troubleshoot.                              |
+|     **503**     | | **upstream_reset_before_response_started**      | | This error currently requires a Packet Capture (tcpdump) to troubleshoot.                            |
 |                 | | **{remote_refused_stream_reset}**               |                                                                                                        |
 +-----------------+---------------------------------------------------+--------------------------------------------------------------------------------------------------------+
 |     **504**     | | **stream_idle_timeout**                         | |  Origin server took more than the idle timeout configured to respond to the request. Increase the    |
