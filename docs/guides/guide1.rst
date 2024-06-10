@@ -1273,7 +1273,9 @@ Other Errors
 
   https://my.f5.com/manage/s/article/K98868401 
 
-  |img019|  
+.. image:: ./images/picture19.png
+   :width: 700px
+   :align: center
 
 Important Request Log Fields
 ----------------------------
@@ -1288,7 +1290,7 @@ Important Request Log Fields
 * **duration_with_no_data_tx_delay = time_to_first_downstream_tx_byte - time_to_first_upstream_tx_byte**: Similar to duration_with_data_tx_delay , except that reference is taken from the moment first byte is sent to client		
 
 Terminology
-~~~~~~~~~~~
+-----------
 
 * AWAF: Advanced Web Application Firewall
 
@@ -1301,7 +1303,3 @@ Terminology
 * WAAP: Web Application & API Protection
 
 * XC: F5 Distributed Cloud
-
-.. |img019| image:: ./images/picture19.png
-   :width: 700px
-   :align: center
