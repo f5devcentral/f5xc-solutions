@@ -30,7 +30,7 @@ Contributing
 
 Please feel free to submit issues or updates to the repo listed below.  
 
-Github: https://github.com/Mikej81/bigip_to_xc_faq
+Github: https://github.com/f5devcentral/f5xc-solutions
 
 .. _disqualifiers:
 
