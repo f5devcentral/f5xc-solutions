@@ -522,6 +522,41 @@ Websockets are supported for load balancing in Distributed Cloud.
 
 https://f5cloud.zendesk.com/hc/en-us/articles/18944650914327-How-to-configure-Websockets-correctly-on-F5-XC-platform
 
+Custom Error & Response pages
+-----------------------------
+
+There are several options in Distributed Cloud for Custom Error and Response Pages.
+
+* https://f5cloud.zendesk.com/hc/en-us/articles/12660970533527-What-is-the-Custom-Error-Response-feature
+
+There may be instances where more details are desired for the response page.  Today, the only value that can be insert via the custom response is Request ID ``{{req_id}}``.  
+However, it is possible to use javascript in the response page to add additional details from the request / response headers.
+
+.. code-block:: html
+
+   <!DOCTYPE html>
+   <html lang="en">
+   <head>
+       <meta charset="UTF-8">
+       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       <title>Request Rejected</title>
+   </head>
+   <body>
+   </body>
+   <script>
+   var req = new XMLHttpRequest();
+   req.open('GET', document.location, true);
+   req.send(null);
+   req.onload = function() {
+     var headers = req.getResponseHeader("client-ip").toLowerCase();
+     document.body.innerText = `Value of 'client-ip' header: ${headers}`;
+     console.log(headers);
+   };
+   </script>
+   </html> 
+
+Another example is included below in the APM iRule Event section.
+
 LTM as Upstream / Origin
 ------------------------
 
