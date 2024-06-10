@@ -672,7 +672,7 @@ To create the same scenario as a traffic group or floating self, you can use VRR
 
 A byproduct of enabling VRRP on your cluster, and creating a common VIP, is that you can also use that common VIP as a default gateway. 
 
-Refer to the Custoemr Edge section for additional details on VRRP and Multicast. `Clustering and High availability`_
+Refer to the Customer Edge section for additional details on VRRP and Multicast. `Clustering and High availability`_
 
 Custom Monitors
 ---------------
