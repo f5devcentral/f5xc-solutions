@@ -50,7 +50,7 @@ Here is an example of a basic bash script:
     while IFS=, read -r column1 column2 column3
     do
         curl -X POST -H 'Content-Type: application/json' \
-        -d '{"metadata":{"name":"cert1","namespace":"'$column1'"},"spec":{"certificate_url":"'$column2'",
+        -d '{"metadata":{"name":"cert1","namespace":"'$column1'"},"spec":{"certificate_url":"'$column2'", \
             "private_key":{"blindfold_secret_info":{"location":"'$column3'"}}}}' \
         'https://acmecorp.console.ves.volterra.io/api/config/namespaces/ns1/certificates'
     done < data.csv
