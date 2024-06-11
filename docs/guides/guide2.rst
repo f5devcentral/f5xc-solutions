@@ -122,6 +122,8 @@ Advanced Python and Jinja Templates
 As your automation needs grow, you might find bash scripts limiting. Python offers more advanced capabilities, 
 including the use of Jinja templates for dynamic content generation.
 
+* What is Jinja?  https://jinja.palletsprojects.com/en/3.1.x/intro/
+
 Example Python Script
 ---------------------
 
