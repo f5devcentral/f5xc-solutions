@@ -1012,24 +1012,24 @@ This gets us to the TMSTATS collections that span usually beyond the last 30 day
    :align: center
 
 iRules
-======
+------
 
 If not clear, any irules that are performing redirects, header additions, rewrites, or appending values are easily migrated to L7 Routes. If the irules requires things like binary scan, that is something XC does not support today. 
 
 IRules that focus on Access Control based on evaluating IP blocks, client source addresses, etc., are easily migrated to Service Policies. 
 
 RULE_INIT
----------
+^^^^^^^^^
 
 RULE_INIT is generally used to set some static variables for use in the rest of the irule, since we don’t have any programming logic in XC in order to take advantage of this, it can generally be thrown out, but pay attention to any definitions of data groups or things like that so you can understand the irules purpose; is it pulling domain names, is it pulling client ips, etc. 
 
 CLIENT_ACCEPTED
----------------
+^^^^^^^^^^^^^^^
 
 Depending on what is happening during CLIENT_ACCEPTED this event may not be needed, or if there is some complex action requirements it will not be a good possibility for porting. Most customers use this to log client ip/prefix data, or select a pool based on an identifying client attribute, this can be done via L7 Routes.
 
 CLIENTSSL_CLIENTCERT
---------------------
+^^^^^^^^^^^^^^^^^^^^
 
 This event is probably not as common outside of mTLS use-cases, and in many cases is just used for logging, but also commonly used to create SSL Session ID's for Persistence use-cases. While XC does not support SSL Session ID persistence today, it does support mTLS, and it can extract the X.509 attributes and inject into headers to use for similar purposes. 
 
@@ -1055,12 +1055,12 @@ We can use mTLS configuration to extract the X.509 Values.
 Which we can then use for logic in the L7 routes. 
 
 LB_SELECTED & LB_FAILED 
------------------------
+^^^^^^^^^^^^^^^^^^^^^^^
 
 Depending on the use-case here, it's possible that we can supply simple solutions in XC to match functionality. Are you sending an apology page, are you redirecting, etc. 
 
 HTTP_REQUEST 
-------------
+^^^^^^^^^^^^
 
 Depending on what is happening here, most irules are easily portable to L7 routes, excluding any collection or streaming. Setting, removing, and appending HTTP Headers can be carried out in several ways, including AND/OR logic for modification.  
 
@@ -1103,12 +1103,12 @@ If the irule also does Host rewrites to the upstream, or path rewriting, this is
    :align: center
 
 HTTP_REQUEST_DATA 
------------------
+^^^^^^^^^^^^^^^^^
 
 XC does not support HTTP Collect or streaming, so irules that rely heavily on this event will not be a good fit. However, you can do service chaining with NGINX in vk8s to carry out the end goal in some cases. 
 
 HTTP_RESPONSE
--------------
+^^^^^^^^^^^^^
 
 Like HTTP_REQUEST, this should be easily portable to L7 routes in XC.  For example: 
 
@@ -1120,12 +1120,12 @@ Like HTTP_REQUEST, this should be easily portable to L7 routes in XC.  For examp
    } 
 
 HTTP_RESPONSE_DATA 
-------------------
+^^^^^^^^^^^^^^^^^^
 
 XC does not support HTTP Collect or streaming, so irules that rely heavily on this event will not be a good fit. However, you can do service chaining with NGINX in vk8s to carry out the end goal in some cases. 
 
 ACCESS_SESSION_STARTED, ACCESS_POLICY_AGENT_EVENT, ACCESS_POLICY_COMPLETED, ACCESS_ACL_DENIED, ACCESS_ACL_ALLOWED, REWRITE_REQUEST_DONE, REWRITE_RESPONSE_DONE, ACCESS_SESSION_CLOSED 
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Since these are all APM iRules events, they are not supported in XC.  What we can do is evaluate incoming headers; MRH_Session, www-authenticate, etc., and make decisions on traffic. 
 
@@ -1186,7 +1186,7 @@ An Example of filtering unauthenticated traffic would be to create a route and f
    </html>
 
 Logging
--------
+^^^^^^^
 
 Many customers use iRules to add more values to logs. With XC, many of the standard values are captured as part of the request and security logs by default.  
 
@@ -1232,7 +1232,7 @@ Another example that is common is logging all headers, which is another default 
    }  
 
 Example Conversions in Terraform
---------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Standard http to https redirects are a checkbox in the UI but are also remarkably simple in terraform. 
 
