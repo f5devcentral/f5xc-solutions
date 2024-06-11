@@ -199,7 +199,7 @@ If you do not have access to Policy Supervisor, you should check out the guidanc
    :align: center
 
 Local Traffic Manager
-=====================
+---------------------
 
 There are very few disqualifiers for LTM.
 
@@ -215,14 +215,14 @@ There are very few disqualifiers for LTM.
 #. OneConnect
 
 DNS
-===
+---
 
 Distributed Cloud DNS supports Primary, Secondary, and DNS Load Balancing.  The base format for zones is JSON/YAML, and in some cases cannot be directly imported.
 
 For BIG-IP DNS Wide IP configurations, there is not an automated way to migrate today, so this will be a manual process.
 
 BIG-IP DNS Pool to XC DNS LB Pool
----------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This will be a very small example of a manual migration to XC.  As we can see below from the output of ```list gtm pool``` we have two pools with single members.
 
@@ -250,7 +250,7 @@ We can see how pool1 would map to XC DNS LB Pool in the figure below.
    :align: center
 
 BIG-IP DNS Wide IP to XC DNS LB Record
---------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 As we can see below from the output of ```list gtm wideip``` we have one Wide-IP with two pools.  There arent any rules here to dig in to, but those can be configured in XC as needed.
 
@@ -274,7 +274,7 @@ We can see how the Wide-IP for example.domain.com would map to XC in the figure 
    :align: center
 
 Zonerunner & DNSExpress
------------------------
+^^^^^^^^^^^^^^^^^^^^^^^
 
 For BIG-IP DNS Host Zones, it is possible to migrate a couple ways.
 
@@ -289,12 +289,12 @@ For BIG-IP DNS Host Zones, it is possible to migrate a couple ways.
 .. note:: Since this document is focused on BIG-IP to Distributed Cloud, BIND import is out of scope, but importing named/BIND9 zone files is also supported.
 
 APM to Distributed Cloud (Service Chaining)
-===========================================
+-------------------------------------------
 
 We covered the disqualifiers, but there are some that will work fine, like service chaining for Federation, or header validation.
 
 API Security
-------------
+^^^^^^^^^^^^
 
 One of the major differences in API security between BIG-IP and Distributed Cloud is the addition of API Discovery.  Today, the policies from BIG-IP will not transfer.  However,
 if the current implemention utilized an OpenAPI Spec, that spec can be imported into Distributed Cloud.
