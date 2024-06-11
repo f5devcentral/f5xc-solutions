@@ -124,8 +124,8 @@ including the use of Jinja templates for dynamic content generation.
 
 * What is Jinja?  https://jinja.palletsprojects.com/en/3.1.x/intro/
 
-Example Python Script
----------------------
+Example Python Script - Create Certificate
+------------------------------------------
 
 Here is an example using Python and Jinja2:
 
