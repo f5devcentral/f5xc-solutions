@@ -561,12 +561,12 @@ Here is an example of a Security Policy configuration in JSON.
    }
 
 LTM to Load Balancing as a Service
-==================================
+----------------------------------
 
 Most services will move to Distributed Cloud fairly easily.
 
 TCP Option 28 and Proxy Protocol
---------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 While the BIG-IP supports TCP Option 28 to maintain client source ip, due to never making it out of experimental, Distributed cloud went with Proxy Protocol.  This can
 be configured under Distributed Cloud Origin Pool Settings.
@@ -578,7 +578,7 @@ be configured under Distributed Cloud Origin Pool Settings.
    Origin Pool Miscellaneous Config.
 
 TCP Passthrough Load Balancer
------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To create a load balancer for TLS passthrough, ensure that you do not configure TLS on the Load Balancer, or the Origin Pool.  You can still use SNI on the Load Balancer.
 
@@ -595,14 +595,14 @@ To create a load balancer for TLS passthrough, ensure that you do not configure 
    TLS Passthrough Origin Pool Config
 
 Websockets
-----------
+^^^^^^^^^^
 
 Websockets are supported for load balancing in Distributed Cloud.  
 
 https://f5cloud.zendesk.com/hc/en-us/articles/18944650914327-How-to-configure-Websockets-correctly-on-F5-XC-platform
 
 Custom Error & Response pages
------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 There are several options in Distributed Cloud for Custom Error and Response Pages.
 
@@ -637,7 +637,7 @@ However, it is possible to use javascript in the response page to add additional
 Another example is included below in the APM iRule Event section.
 
 LTM as Upstream / Origin
-------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 Occasionally there is a use-case where instead of a Customer Edge on-premises, you want to continue to use a BIG-IP.  This will work,
 as long as proper preparations are made.  In many situations there may be custom (or even using default) TCP and HTTP Profiles which can be
@@ -723,7 +723,7 @@ Distributed Cloud is a SaaS Platform.  BIG-IP is not.  Some applications may be 
 
 
 LTM to Customer Edge
---------------------
+^^^^^^^^^^^^^^^^^^^^
 
 The following ports can not be used when advertising services on a Customer Edge. 
 
@@ -775,12 +775,12 @@ The following ports can not be used when advertising services on a Customer Edge
 .. note:: When using a Custom VIP/IP on the Customer Edge, is is possible to advertise / listen on TCP/UDP 53.
 
 SNAT Pooling
-------------------
+^^^^^^^^^^^^
 
 Today, XC does not support a traditional SNAT pool type configuration, however, you can scale SNAT based on nodes in a cluster.  So a 3 node cluster will have 3 IPs for SNATTING, if you need more SNAT IPs, then add more nodes. 
 
 Traffig Group / Floating Self-IP
---------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To create the same scenario as a traffic group or floating self, you can use VRRP.  Check out Harmon's article here, where he discusses some of the CE design scenarios.  https://community.f5.com/t5/technical-articles/f5-distributed-cloud-customer-edge-site-deployment-amp-routing/ta-p/319435 
 
@@ -789,7 +789,7 @@ A byproduct of enabling VRRP on your cluster, and creating a common VIP, is that
 Refer to the Customer Edge section for additional details on VRRP and Multicast. `Clustering and High availability`_
 
 Custom Monitors
----------------
+^^^^^^^^^^^^^^^
 
 If you have been relying on custom monitors for routine tasks such as backing up data to an FTP server, sending email reports, or generating alerts based on storage availability. With F5 Distributed Cloud (XC), many of these functions are seamlessly integrated, thanks to our SaaS platform’s built-in scheduled reporting and alert capabilities.
 
@@ -846,10 +846,10 @@ For instance, if you need to activate a service policy or a network firewall rul
                      curl -s -X ${API_METHOD} -H 'Content-Type: application/json' -H "Authorization: ${API_TOKEN}" "${API_URI}"
 
 QKView - iHealth
-================
+----------------
 
 Graphs
-------
+^^^^^^
 
 SSL Transactions
 ^^^^^^^^^^^^^^^^
