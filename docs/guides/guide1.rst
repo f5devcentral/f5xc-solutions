@@ -103,9 +103,9 @@ ProxMox
 
 This guide was written based on Proxmox VE 8.1.3.
 
-.. image:: ./images/proxmox1.png
-   :width: 700px
-   :align: center
+   .. image:: ./images/proxmox1.png
+      :width: 700px
+      :align: center
 
 #. Under your node (proxmox) in the Network section
 
