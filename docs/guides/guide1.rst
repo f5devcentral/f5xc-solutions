@@ -126,19 +126,20 @@ ProxMox
 
 This guide was written based on Proxmox VE 8.1.3.
 
-   .. image:: ./images/proxmox1.png
-      :width: 700px
-      :align: center
 
 #. Under your node (proxmox) in the Network section
 
-   - Ensure there is a bridge connected to the network(s) you want to use
-   - vmbr0 will be used in this example
-   - vmbr0 on this setup is the outside interface with access to the internet
+  .. image:: ./images/proxmox1.png
+     :width: 700px
+     :align: center
 
-   .. image:: ./images/proxmox2.png
-      :width: 700px
-      :align: center
+  - Ensure there is a bridge connected to the network(s) you want to use
+  - vmbr0 will be used in this example
+  - vmbr0 on this setup is the outside interface with access to the internet
+
+  .. image:: ./images/proxmox2.png
+     :width: 700px
+     :align: center
 
 #. Upload the ISO to your proxmox installation
 
