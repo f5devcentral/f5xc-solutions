@@ -1243,20 +1243,20 @@ Pool Selection Based on URI:  https://github.com/Mikej81/xc-app-services-tf/blob
 
 
 Customer Edge
-=============
+-------------
 
 A Customer Edge is a Replica of an F5 Distributed Cloud Regional Edge, on a customer site.  It will fit into almost any form factor
 and will extend the F5 Global Fabric to the edge location for use in multi-cloud network and multi-cloud application use-cases.
 
 Sizing
-------
+^^^^^^
 
 Customer Edge Sizing can be simple, or not simple. Same as a BIG-IP, does it need LTM, APM, ASM, AFM, etc? HA?  Is the CE going to be used for L3 Routing / Mesh services only?  Will it need to run security services?  Will it need to run compute?
 
 A good primer on deployment models can be found at Matt Harmon's article here:  https://community.f5.com/kb/technicalarticles/f5-distributed-cloud---customer-edge-site---deployment--routing-options/319435
 
 Clustering and High availability
---------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Customer Edge Clustering differs from BIG-IP in that it is based on Kubernetes, and requires different 
 architectures.  
@@ -1293,12 +1293,12 @@ If you decide to enable VRRP for a cluster, the following should be evaluated to
      execcli vifdump -i 15 -nnve vrrp and not host [ip-of-ce-node]
 
 Troubleshooting
-~~~~~~~~~~~~~~~
+---------------
 
 In some cases, for troubleshooting, I can help to turn off XC Default Error Messages and allow errors directly from the Upstream.
 
 Response Error Codes
---------------------
+^^^^^^^^^^^^^^^^^^^^
 
 +-----------------+---------------------------------------------------+--------------------------------------------------------------------------------------------------------+
 |  Response Code  | Error Message                                     | Description                                                                                            |
@@ -1397,7 +1397,7 @@ Response Error Codes
 +-----------------+------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 Other Errors
-------------
+^^^^^^^^^^^^
 
 * Refused to execute script from 'https://exampl.com/Errors/GlobalExceptionHandler.aspx?aspxerrorpath=/WebResource.axd' because its MIME type ('text/html') is not executable, and strict MIME type checking is enabled. 
 
@@ -1408,7 +1408,7 @@ Other Errors
    :align: center
 
 Important Request Log Fields
-----------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 * **time_to_last_downstream_tx_byte**: Interval between the first downstream byte received and the last downstream byte sent.		
 * **time_to_first_downstream_tx_byte**: Interval between the first downstream byte received and the first downstream byte sent.		
