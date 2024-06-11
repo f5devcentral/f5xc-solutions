@@ -8,7 +8,7 @@ BIG-IP To Distributed Cloud Conversion Frequently Asked Questions and Tips
 .. _disclaimer:
 
 Disclaimer
-==========
+----------
 
 Please note that this FAQ document is intended as a general guide and is not exhaustive. 
 While we strive to provide accurate and up-to-date information, the rapidly evolving nature of 
@@ -19,14 +19,14 @@ to your specific circumstances.
 .. _introduction:
 
 Introduction
-============
+------------
 
 This semi-comprehensive guide is designed to streamline your migration from F5 BIG-IP to F5 Distributed Cloud.  
 This document aims to address frequently asked questions that arise during the migration process, offering clear, 
 concise answers and practical insights to ensure a smooth transition.
 
 Contributing
-============
+------------
 
 Please feel free to submit issues or updates to the repo listed below.  
 
@@ -35,7 +35,7 @@ Github: https://github.com/f5devcentral/f5xc-solutions
 .. _disqualifiers:
 
 Disqualifiers
-=============
+-------------
 
 This is a list of use-cases that can be used to immediately disqualify a migration, with some caveats. 
 There are service chaining use-cases that could still work, or ways to implement policies to redirect 
@@ -57,7 +57,7 @@ traffic to a BIG-IP instead of XC, or ways to inline NGINX into XC to carry out 
 .. note:: There are some workable use-cases around Federated Authentication and proxy/service chaining.
 
 Tools
-=====
+-----
 
 The following are tools available to use today.  It's important to note that none of these tools are 100%. It is highly recommended to work with an XC Specialist to help in migration from other platforms to XC.
 
@@ -75,7 +75,7 @@ The following are tools available to use today.  It's important to note that non
 - Domain Keep-Alive Analyzer: `Domain Keep-Alive Analyzer <Domain Keep-Alive Analyzer_>`_
 
 Cloud & Platform Support
-========================
+------------------------
 
 - Azure: https://docs.cloud.f5.com/docs/how-to/site-management/create-azure-site
 - AWS: 
@@ -99,7 +99,7 @@ Cloud & Platform Support
   - How To: https://docs.cloud.f5.com/docs/how-to/site-management/create-baremetal-site
 
 ProxMox
--------
+^^^^^^^
 
 This guide was written based on Proxmox VE 8.1.3.
 
@@ -152,7 +152,7 @@ This guide was written based on Proxmox VE 8.1.3.
 #. Select the CE VM choose Console and click Start.  From here you can follow the baremetal installation instructions.
 
 AWAF to WAAP
-============
+------------
 
 .. note:: While we understand that some organizations have spend years, and even decades tuning a WAF policy, the recommended best practice when moving to Distributed Cloud WAAP is to start with the default recommendations, and tune from there.
    Service Policies will cover traditional IP blocks as well as additional IP-Geo, and additional allow/deny rules.  
