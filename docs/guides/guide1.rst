@@ -78,23 +78,36 @@ Cloud & Platform Support
 ------------------------
 
 - Azure: https://docs.cloud.f5.com/docs/how-to/site-management/create-azure-site
+
 - AWS: 
+
    - VPC: https://docs.cloud.f5.com/docs/how-to/site-management/create-aws-site
    - TGW: https://docs.cloud.f5.com/docs/how-to/site-management/create-aws-site-with-tgw
 - GCP: https://docs.cloud.f5.com/docs/how-to/site-management/create-gcp-site
+
 - OCI: (Follow Baremetal, use qcow2 image):
+
    - Image: https://docs.cloud.f5.com/docs/images/node-cert-hw-kvm-images 
    - How To: https://docs.cloud.f5.com/docs/how-to/site-management/create-baremetal-site  
+
 - VMWare: 
+
    - Image: https://docs.cloud.f5.com/docs/images/node-vmware-images
    - How To: https://docs.cloud.f5.com/docs/how-to/site-management/create-vmw-site
+
 - ProxMox: See ProxMox section below.
+
 - KVM: 
+
   - Image: https://docs.cloud.f5.com/docs/images/node-cert-hw-kvm-images
   - How To: https://docs.cloud.f5.com/docs/how-to/site-management/create-kvm-libvirt-site
+
 - KubeVirt: Content Under Development
+
 - k8s: https://docs.cloud.f5.com/docs/how-to/site-management/create-k8s-site
+
 - Baremetal:
+
    - Image: https://docs.cloud.f5.com/docs/images/node-cert-hw-kvm-images 
    - How To: https://docs.cloud.f5.com/docs/how-to/site-management/create-baremetal-site
 
