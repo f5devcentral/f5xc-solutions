@@ -78,39 +78,48 @@ Cloud & Platform Support
 ------------------------
 
 - Azure: Azure is supported out of the box for Console and Terraform based deployments.
-  - How To: https://docs.cloud.f5.com/docs/how-to/site-management/create-azure-site
+
+   * How To: https://docs.cloud.f5.com/docs/how-to/site-management/create-azure-site
 
 - AWS: AWS is supported out of the box for Console and Terraform based deployments.
-  - VPC: https://docs.cloud.f5.com/docs/how-to/site-management/create-aws-site
-- TGW: https://docs.cloud.f5.com/docs/how-to/site-management/create-aws-site-with-tgw
+
+   * VPC: https://docs.cloud.f5.com/docs/how-to/site-management/create-aws-site
+   * TGW: https://docs.cloud.f5.com/docs/how-to/site-management/create-aws-site-with-tgw
 
 - GCP: GCP is supported out of the box for Console and Terraform based deployments.
-  - https://docs.cloud.f5.com/docs/how-to/site-management/create-gcp-site
+
+   * How To: https://docs.cloud.f5.com/docs/how-to/site-management/create-gcp-site
 
 - OCI: (Follow Baremetal, use qcow2 image):
-  - Image: https://docs.cloud.f5.com/docs/images/node-cert-hw-kvm-images 
-  - How To: https://docs.cloud.f5.com/docs/how-to/site-management/create-baremetal-site  
+
+   * Image: https://docs.cloud.f5.com/docs/images/node-cert-hw-kvm-images 
+   * How To: https://docs.cloud.f5.com/docs/how-to/site-management/create-baremetal-site  
 
 - VMWare: VMWare is supported out of the box Manual and Terraform based deployments.
-   - Image: https://docs.cloud.f5.com/docs/images/node-vmware-images
-   - How To: https://docs.cloud.f5.com/docs/how-to/site-management/create-vmw-site
+
+   * Image: https://docs.cloud.f5.com/docs/images/node-vmware-images
+   * How To: https://docs.cloud.f5.com/docs/how-to/site-management/create-vmw-site
 
 - ProxMox: ProxMox is supported out of the box Manual and Terraform based deployments.
-  - How To - Manual: `ProxMox`_
-  - How To - Terraform: https://github.com/mwiget/f5xc-proxmox-site 
+
+   * How To - Manual: `ProxMox`_
+   * How To - Terraform: https://github.com/mwiget/f5xc-proxmox-site 
 
 - KVM: KVM is supported out of the box Manual and Terraform based deployments.
-  - Image: https://docs.cloud.f5.com/docs/images/node-cert-hw-kvm-images
-  - How To: https://docs.cloud.f5.com/docs/how-to/site-management/create-kvm-libvirt-site
+
+   * Image: https://docs.cloud.f5.com/docs/images/node-cert-hw-kvm-images
+   * How To: https://docs.cloud.f5.com/docs/how-to/site-management/create-kvm-libvirt-site
 
 - KubeVirt: KubeVirt KVM is supported out of the box Manual, but documentation is under development.
 
 - k8s: k8s is supported out of the box Manual deployment via helm or manifest.
-  - How To: https://docs.cloud.f5.com/docs/how-to/site-management/create-k8s-site
 
- - Baremetal: Baremetal is supported out of the box Manual deployment.
-  - Image: https://docs.cloud.f5.com/docs/images/node-cert-hw-kvm-images 
-  - How To: https://docs.cloud.f5.com/docs/how-to/site-management/create-baremetal-site
+   * How To: https://docs.cloud.f5.com/docs/how-to/site-management/create-k8s-site
+
+- Baremetal: Baremetal is supported out of the box Manual deployment.
+
+  * Image: https://docs.cloud.f5.com/docs/images/node-cert-hw-kvm-images 
+  * How To: https://docs.cloud.f5.com/docs/how-to/site-management/create-baremetal-site
 
 ProxMox
 ^^^^^^^
