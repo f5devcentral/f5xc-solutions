@@ -133,7 +133,6 @@ This guide was written based on Proxmox VE 8.1.3.
    * vmbr0 on this setup is the outside interface with access to the internet
 
    .. image:: ./images/proxmox1.png
-      :width: 700px
       :align: center
 
 #. Upload the ISO to your proxmox installation
@@ -143,7 +142,6 @@ This guide was written based on Proxmox VE 8.1.3.
    * Once upload completes you should see it within the ISO Images list
 
    .. image:: ./images/proxmox2.png
-      :width: 700px
       :align: center
 
 #. Click Create VM in the top right of the proxmox gui
@@ -172,8 +170,8 @@ This guide was written based on Proxmox VE 8.1.3.
    * Click Next to move to the Confirm tab
    * Review choices and click Finish to create the VM
    .. note:: If an addition interface (INSIDE) is need it can be added now.
+
    .. image:: ./images/proxmox3.png
-      :width: 700px
       :align: center
 #. Select the CE VM choose Console and click Start.  From here you can follow the baremetal installation instructions.
 
