@@ -79,15 +79,15 @@ Cloud & Platform Support
 
 - Azure: https://docs.cloud.f5.com/docs/how-to/site-management/create-azure-site
 - AWS: 
-  - VPC: https://docs.cloud.f5.com/docs/how-to/site-management/create-aws-site
-  - TGW: https://docs.cloud.f5.com/docs/how-to/site-management/create-aws-site-with-tgw
+   - VPC: https://docs.cloud.f5.com/docs/how-to/site-management/create-aws-site
+   - TGW: https://docs.cloud.f5.com/docs/how-to/site-management/create-aws-site-with-tgw
 - GCP: https://docs.cloud.f5.com/docs/how-to/site-management/create-gcp-site
 - OCI: (Follow Baremetal, use qcow2 image):
-  - Image: https://docs.cloud.f5.com/docs/images/node-cert-hw-kvm-images 
-  - How To: https://docs.cloud.f5.com/docs/how-to/site-management/create-baremetal-site  
+   - Image: https://docs.cloud.f5.com/docs/images/node-cert-hw-kvm-images 
+   - How To: https://docs.cloud.f5.com/docs/how-to/site-management/create-baremetal-site  
 - VMWare: 
-  - Image: https://docs.cloud.f5.com/docs/images/node-vmware-images
-  - How To: https://docs.cloud.f5.com/docs/how-to/site-management/create-vmw-site
+   - Image: https://docs.cloud.f5.com/docs/images/node-vmware-images
+   - How To: https://docs.cloud.f5.com/docs/how-to/site-management/create-vmw-site
 - ProxMox: See ProxMox section below.
 - KVM: 
   - Image: https://docs.cloud.f5.com/docs/images/node-cert-hw-kvm-images
@@ -95,8 +95,8 @@ Cloud & Platform Support
 - KubeVirt: Content Under Development
 - k8s: https://docs.cloud.f5.com/docs/how-to/site-management/create-k8s-site
 - Baremetal:
-  - Image: https://docs.cloud.f5.com/docs/images/node-cert-hw-kvm-images 
-  - How To: https://docs.cloud.f5.com/docs/how-to/site-management/create-baremetal-site
+   - Image: https://docs.cloud.f5.com/docs/images/node-cert-hw-kvm-images 
+   - How To: https://docs.cloud.f5.com/docs/how-to/site-management/create-baremetal-site
 
 ProxMox
 ^^^^^^^
@@ -113,8 +113,8 @@ This guide was written based on Proxmox VE 8.1.3.
    - vmbr0 on this setup is the outside interface with access to the internet
 
    .. image:: ./images/proxmox2.png
-   :width: 700px
-   :align: center
+      :width: 700px
+      :align: center
 
 #. Upload the ISO to your proxmox installation
    - local->ISO Images->Upload
@@ -152,8 +152,8 @@ This guide was written based on Proxmox VE 8.1.3.
 
 
    .. image:: ./images/proxmox3.png
-   :width: 700px
-   :align: center
+     :width: 700px
+     :align: center
 
 #. Select the CE VM choose Console and click Start.  From here you can follow the baremetal installation instructions.
 
