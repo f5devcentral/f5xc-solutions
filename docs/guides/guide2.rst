@@ -7,12 +7,17 @@
 Getting Started with Distributed Cloud Automation
 =================================================
 
-Cloud automation is a broad and powerful topic that can greatly enhance your IT infrastructure management. This guide will help you understand the various levels of automation, from simple scripting to advanced continuous integration/continuous deployment (CI/CD) pipelines and infrastructure as code (IaC) tools like Terraform.
+Cloud automation is a broad and powerful topic that can greatly enhance your IT infrastructure management. This guide will 
+help you understand the various levels of automation, from simple scripting to advanced continuous integration/continuous deployment 
+(CI/CD) pipelines and infrastructure as code (IaC) tools like Terraform.
 
 Autoamtion Overview
 ===================
 
-Cloud automation involves using scripts and tools to manage cloud resources and services automatically. The complexity of your automation can range from basic scripts to comprehensive CI/CD pipelines. This guide will cover:
+Cloud automation involves using scripts and tools to manage cloud resources and services automatically. 
+The complexity of your automation can range from basic scripts to comprehensive CI/CD pipelines. 
+
+This guide will cover:
 
 - Getting Started with F5 Distributed Cloud API
 - Simple iterative bash scripts
