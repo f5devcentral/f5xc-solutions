@@ -52,6 +52,10 @@ traffic to a BIG-IP instead of XC, or ways to inline NGINX into XC to carry out 
 
 .. warning:: With the deprecation of NTLM Announced by Microsoft, it is recommend that all customers move to Kerberos, if at all possible.
 
+#. APM Authentication services are not supported in Distrubuted Cloud today.
+
+.. note:: There are some workable use-cases around Federated Authentication and proxy/service chaining.
+
 Tools
 =====
 
@@ -70,13 +74,82 @@ The following are tools available to use today.  It's important to note that non
 - BIND to XC Conversion tool: `BIND to XC Conversion tool <BIND to XC Conversion tool_>`_
 - Domain Keep-Alive Analyzer: `Domain Keep-Alive Analyzer <Domain Keep-Alive Analyzer_>`_
 
-Access Policy Manager
-=====================
+Cloud & Platform Support
+========================
 
-APM services are not supported in Distrubuted Cloud today, but Service/Proxy chaining is supported.
+- Azure: https://docs.cloud.f5.com/docs/how-to/site-management/create-azure-site
+- AWS: 
+  - VPC: https://docs.cloud.f5.com/docs/how-to/site-management/create-aws-site
+  - TGW: https://docs.cloud.f5.com/docs/how-to/site-management/create-aws-site-with-tgw
+- GCP: https://docs.cloud.f5.com/docs/how-to/site-management/create-gcp-site
+- OCI: (Follow Baremetal, use qcow2 image):
+  - Image: https://docs.cloud.f5.com/docs/images/node-cert-hw-kvm-images 
+  - How To: https://docs.cloud.f5.com/docs/how-to/site-management/create-baremetal-site  
+- VMWare: 
+  - Image: https://docs.cloud.f5.com/docs/images/node-vmware-images
+  - How To: https://docs.cloud.f5.com/docs/how-to/site-management/create-vmw-site
+- ProxMox: See ProxMox section below.
+- KVM: 
+  - Image: https://docs.cloud.f5.com/docs/images/node-cert-hw-kvm-images
+  - How To: https://docs.cloud.f5.com/docs/how-to/site-management/create-kvm-libvirt-site
+- KubeVirt: Content Under Development
+- k8s: https://docs.cloud.f5.com/docs/how-to/site-management/create-k8s-site
+- Baremetal:
+  - Image: https://docs.cloud.f5.com/docs/images/node-cert-hw-kvm-images 
+  - How To: https://docs.cloud.f5.com/docs/how-to/site-management/create-baremetal-site
 
-.. note:: There are some workable use-cases around Federated Authentication and proxy/service chaining.
+ProxMox
+-------
 
+This guide was written based on Proxmox VE 8.1.3.
+
+[image1]
+
+#. Under your node (proxmox) in the Network section
+   - Ensure there is a bridge connected to the network(s) you want to use
+   - vmbr0 will be used in this example
+   - vmbr0 on this setup is the outside interface with access to the internet
+
+[image2]
+
+#. Upload the ISO to your proxmox installation
+   - local->ISO Images->Upload
+   - Select the ISO file and finalize with Upload
+   - Once upload completes you should see it within the ISO Images list
+
+#. Click Create VM in the top right of the proxmox gui
+   - Enter a unused VM ID >100
+   - Enter a name for the VM
+   - Click Next to move to the OS tab
+   - Select the storage location
+   - Leave Guest OS set to Linux and 2.6 Kernel
+   - Select the CE ISO image that was uploaded
+   - Click Next to move to the System tab
+   - No changes are needed
+   - Click Next to move to the Disks tab
+   - Set Disk Size to >45GB (80GB+ for regular operations, 100GB+ recommended for AppStack)
+   - Ensure Cache is set to No Cache
+   - Click Next to move to the CPU tab
+   - CPU Cores should be set to >4
+   - Type should be set to host (host virtualization is required vs QEMU emulation types)
+   - Click Next to move to the Memory tab
+   - Set Memory to >14GB (16GB is recommended)
+
+     .. warning:: Less than 14Gb will result in an error registering the CE later in the process
+
+   - Click Next to move to the Network tab
+   - Set Bridge to the network bridge device for the outside interface eg. vmbr0
+   - Set Model to VirtIO
+   - Firewall can be disable otherwise proxmox rules could prevent communication to the VM
+   - Click Next to move to the Confirm tab
+   - Review choices and click Finish to create the VM
+
+   .. note:: If an addition interface (INSIDE) is need it can be added now.
+
+
+[image3]
+
+#. Select the CE VM choose Console and click Start.  From here you can follow the baremetal installation instructions.
 
 AWAF to WAAP
 ============
