@@ -11,7 +11,7 @@ Cloud automation is a broad and powerful topic that can greatly enhance your IT 
 help you understand the various levels of automation, from simple scripting to advanced continuous integration/continuous deployment 
 (CI/CD) pipelines and infrastructure as code (IaC) tools like Terraform.
 
-Autoamtion Overview
+Automation Overview
 ===================
 
 Cloud automation involves using scripts and tools to manage cloud resources and services automatically. 
