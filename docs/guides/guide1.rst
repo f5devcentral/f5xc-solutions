@@ -127,6 +127,7 @@ ProxMox
 This guide was written based on Proxmox VE 8.1.3.
 
 #. Under your node (proxmox) in the Network section
+
    * Ensure there is a bridge connected to the network(s) you want to use
    * vmbr0 will be used in this example
    * vmbr0 on this setup is the outside interface with access to the internet
@@ -136,6 +137,7 @@ This guide was written based on Proxmox VE 8.1.3.
       :align: center
 
 #. Upload the ISO to your proxmox installation
+
    * local->ISO Images->Upload
    * Select the ISO file and finalize with Upload
    * Once upload completes you should see it within the ISO Images list
@@ -145,6 +147,7 @@ This guide was written based on Proxmox VE 8.1.3.
       :align: center
 
 #. Click Create VM in the top right of the proxmox gui
+
    * Enter a unused VM ID >100
    * Enter a name for the VM
    * Click Next to move to the OS tab
