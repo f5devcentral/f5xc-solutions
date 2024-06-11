@@ -12,7 +12,7 @@ help you understand the various levels of automation, from simple scripting to a
 (CI/CD) pipelines and infrastructure as code (IaC) tools like Terraform.
 
 Automation Overview
-===================
+-------------------
 
 Cloud automation involves using scripts and tools to manage cloud resources and services automatically. 
 The complexity of your automation can range from basic scripts to comprehensive CI/CD pipelines. 
@@ -26,7 +26,7 @@ This guide will cover:
 - Infrastructure as code with Terraform
 
 Getting Started with F5 Distributed Cloud API
-=============================================
+---------------------------------------------
 
 All API requests are required to be authenticated using either an API Token or API Certificate. Follow the links below to view instructions on how to obtain an API Token or API Certificate from the F5® Distributed Cloud Console (Console).
 
@@ -34,12 +34,12 @@ All API requests are required to be authenticated using either an API Token or A
 * `F5 XC Generating Credentials <https://docs.cloud.f5.com/docs/how-to/user-mgmt/credentials>`_
 
 Simple Iterative Bash Scripts
-=============================
+-----------------------------
 
 For those just starting out, automation can be as simple as writing bash scripts. These scripts can iterate through CSV files and use `curl` commands to interact with cloud platform APIs.
 
 Example Script - Create Certificate
------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Here is an example of a basic bash script:
 
@@ -58,7 +58,7 @@ Here is an example of a basic bash script:
 This script reads data from a CSV file and uses `curl` to make API calls, replacing variables with values from the CSV.
 
 Example Script - Update Customer Edge Site OS & SW
---------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This one might seem more advanced, because its longer, but all it really does is reach out for CE site and tell it to upgrade if there is an upgrade available.
 
@@ -117,7 +117,7 @@ This one might seem more advanced, because its longer, but all it really does is
    fi
 
 Advanced Python and Jinja Templates
-===================================
+-----------------------------------
 
 As your automation needs grow, you might find bash scripts limiting. Python offers more advanced capabilities, 
 including the use of Jinja templates for dynamic content generation.
@@ -125,7 +125,7 @@ including the use of Jinja templates for dynamic content generation.
 * What is Jinja?  https://jinja.palletsprojects.com/en/3.1.x/intro/
 
 Example Python Script - Create Certificate
-------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Here is an example using Python and Jinja2:
 
@@ -167,7 +167,7 @@ Here is an example using Python and Jinja2:
 This script reads from a CSV file, uses a Jinja template to format the data, and makes API calls with the `requests` library.
 
 CI/CD Pipelines
-===============
+---------------
 
 For more complex automation needs, integrating your scripts into CI/CD pipelines can provide robust and repeatable processes. Tools like GitLab, Jenkins, and CircleCI can help manage these pipelines.
 
@@ -187,12 +187,12 @@ Using a tool like GitLab for Continuous Integration (CI) offers several advantag
 These benefits make GitLab a powerful tool for efficiently managing the entire software development lifecycle.
 
 GitLab CI/CD QuickStart
-=======================
+-----------------------
 
 For guidance on how to get started with GitLab, follow this link: `GitLab CI/CD QuickStart <https://docs.gitlab.com/ee/ci/quick_start/>`_
 
 Example GitLab CI/CD Pipeline
------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Here is an example `.gitlab-ci.yml` file for GitLab CI/CD:
 
@@ -217,7 +217,7 @@ Here is an example `.gitlab-ci.yml` file for GitLab CI/CD:
 This pipeline runs tests and then deploys your application, ensuring that changes are tested before deployment.
 
 Infrastructure as Code with Terraform
-=====================================
+-------------------------------------
 
 For managing cloud infrastructure, Terraform is a powerful tool that allows you to define your infrastructure as code. Terraform configurations are declarative, meaning you define the desired state and Terraform handles the rest.
 
@@ -237,14 +237,14 @@ Using Terraform for infrastructure as code (IaC) brings many advantages:
 These benefits make Terraform an excellent choice for managing infrastructure efficiently and effectively across diverse environments.
 
 Getting Started with Terraform
-==============================
+------------------------------
 
 - `Day 0 Beginners Guide to Terraform <https://jessed-guides.readthedocs.io/en/latest/>`_
 - `Terraform Tutorials <https://developer.hashicorp.com/terraform/tutorials>`_
 - `F5 Distributed Cloud Terraform Provider <https://registry.terraform.io/providers/volterraedge/volterra/latest>`_
 
 Example Terraform Configuration
--------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Here is an example Terraform configuration:
 
@@ -269,7 +269,7 @@ Here is an example Terraform configuration:
 This configuration creates a Web Application Firewall object.
 
 Example References
-==================
+------------------
 
 Here are some example references for further exploration:
 
