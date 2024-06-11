@@ -38,8 +38,8 @@ Simple Iterative Bash Scripts
 
 For those just starting out, automation can be as simple as writing bash scripts. These scripts can iterate through CSV files and use `curl` commands to interact with cloud platform APIs.
 
-Example Script
---------------
+Example Script - Create Certificate
+-----------------------------------
 
 Here is an example of a basic bash script:
 
@@ -56,6 +56,65 @@ Here is an example of a basic bash script:
     done < data.csv
 
 This script reads data from a CSV file and uses `curl` to make API calls, replacing variables with values from the CSV.
+
+Example Script - Update Customer Edge Site OS & SW
+--------------------------------------------------
+
+This one might seem more advanced, because its longer, but all it really does is reach out for CE site and tell it to upgrade if there is an upgrade available.
+
+.. code-block:: bash
+
+   #!/bin/bash
+   
+   # Check if the site-name and API Token arguments are provided
+   if [ -z "$1" ]; then
+       echo "Error: No site-name argument provided."
+       echo "Usage: $0 <site-name> <api-token>"
+       exit 1
+   fi
+   
+   if [ -z "$2" ]; then
+       echo "Error: No API Token argument provided."
+       echo "Usage: $0 <site-name> <api-token>"
+       exit 1
+   fi
+   
+   # Assign the first and second arguments to variables
+   SITE_NAME="$1"
+   API_TOKEN="$2"
+   
+   # Construct the API URL with the site-name
+   API_URL="https://<DOMAIN>.console.ves.volterra.io/api/config/namespaces/system/sites/${SITE_NAME}"
+   
+   # Use curl to fetch the JSON data
+   json_data=$(curl -H "Authorization: APIToken ${API_TOKEN}" -s "$API_URL")
+   
+   # Use jq to extract the information
+   version_updates=$(echo "$json_data" | jq -r '.status[] | select(.volterra_software_status != null) | .volterra_software_status | select(.available_version != .deployment_state.version) | .available_version')
+   
+   # Check if there are version updates
+   if [ -z "$version_updates" ]; then
+       echo "No version updates found for site $SITE_NAME"
+   else
+       echo "Version updates for site $SITE_NAME:"
+   
+       # Loop through each version update
+       for version in $version_updates; do
+           echo "Update available: $version"
+   
+           # Construct the POST request body
+           post_data="{\"version\":\"$version\"}"
+   
+           # Replace with the actual POST API endpoint
+           POST_API_URL="$API_URL/upgrade_sw"
+   
+           # Make the POST request
+           response=$(curl -s -X POST -H "Authorization: APIToken ${API_TOKEN}" -H "Content-Type: application/json" -d "$post_data" "$POST_API_URL")
+   
+           echo "Response for version $version:"
+           echo "$response"
+       done
+   fi
 
 Advanced Python and Jinja Templates
 ===================================
