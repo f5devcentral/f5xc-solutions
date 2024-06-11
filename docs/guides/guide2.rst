@@ -9,8 +9,8 @@ Getting Started with Distributed Cloud Automation
 
 Cloud automation is a broad and powerful topic that can greatly enhance your IT infrastructure management. This guide will help you understand the various levels of automation, from simple scripting to advanced continuous integration/continuous deployment (CI/CD) pipelines and infrastructure as code (IaC) tools like Terraform.
 
-Overview
-========
+Autoamtion Overview
+===================
 
 Cloud automation involves using scripts and tools to manage cloud resources and services automatically. The complexity of your automation can range from basic scripts to comprehensive CI/CD pipelines. This guide will cover:
 
@@ -45,7 +45,8 @@ Here is an example of a basic bash script:
     while IFS=, read -r column1 column2 column3
     do
         curl -X POST -H 'Content-Type: application/json' \
-        -d '{"metadata":{"name":"cert1","namespace":"'$column1'"},"spec":{"certificate_url":"'$column2'","private_key":{"blindfold_secret_info":{"location":"'$column3'"}}}}' \
+        -d '{"metadata":{"name":"cert1","namespace":"'$column1'"},"spec":{"certificate_url":"'$column2'",
+            "private_key":{"blindfold_secret_info":{"location":"'$column3'"}}}}' \
         'https://acmecorp.console.ves.volterra.io/api/config/namespaces/ns1/certificates'
     done < data.csv
 
@@ -54,7 +55,8 @@ This script reads data from a CSV file and uses `curl` to make API calls, replac
 Advanced Python and Jinja Templates
 ===================================
 
-As your automation needs grow, you might find bash scripts limiting. Python offers more advanced capabilities, including the use of Jinja templates for dynamic content generation.
+As your automation needs grow, you might find bash scripts limiting. Python offers more advanced capabilities, 
+including the use of Jinja templates for dynamic content generation.
 
 Example Python Script
 ---------------------
@@ -192,7 +194,7 @@ Here is an example Terraform configuration:
      blocking                   = true
      default_detection_settings = true
      default_bot_setting        = true
-     allow_all_response codes   = true
+     allow_all_response_codes   = true
      default_anonymization      = true
    
      use_default_blocking_page = true
