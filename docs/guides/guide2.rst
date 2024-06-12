@@ -21,8 +21,8 @@ This guide will cover:
 
 - Getting Started with F5 Distributed Cloud API
 - Simple iterative bash scripts
-- Prototyping with Postman
 - Advanced Python scripts and Jinja templates
+- Prototyping with Postman
 - CI/CD pipelines using tools like GitLab, Jenkins, and CircleCI
 - Infrastructure as code with Terraform
 
@@ -164,6 +164,79 @@ This one might seem more advanced, because its longer, but all it really does is
        done
    fi
 
+Advanced Python Scripting and Jinja Templates
+---------------------------------------------
+
+As your automation needs grow, you might find bash scripts limiting. Python offers more advanced capabilities, including better error handling, richer data manipulation, and integration with various libraries. One powerful feature of Python is its support for Jinja templates, which allow for dynamic content generation.
+
+**Why Use Python for Automation?**
+
+- **Advanced Capabilities**: Python supports complex logic, data structures, and libraries, making it suitable for more sophisticated automation tasks.
+- **Readability**: Python's syntax is clear and readable, which makes it easier to write and maintain scripts.
+- **Extensive Libraries**: A vast ecosystem of libraries is available for various tasks, from HTTP requests (`requests`) to data manipulation (`pandas`).
+
+**Introduction to Jinja Templates**
+
+Jinja is a templating engine for Python, designed to provide a familiar and straightforward way to generate dynamic content:
+
+- **Template Syntax**: Jinja templates use a familiar, Django-inspired syntax for template variables, loops, and conditionals.
+- **Separation of Logic and Content**: By using templates, you can separate the content generation logic from the actual content, making your code cleaner and more maintainable.
+- **Reusability**: Templates can be reused across different scripts and projects, saving time and effort.
+
+**Advanced Scripting with Python**
+
+As you become more comfortable with Python, you can leverage its advanced features to enhance your automation scripts:
+
+- **Error Handling**: Use try-except blocks to handle errors gracefully and ensure your scripts run smoothly even when encountering issues.
+- **Data Manipulation**: Use libraries like `pandas` for advanced data manipulation and analysis.
+- **Concurrency**: Use Python's concurrency features (`threading`, `asyncio`) to handle multiple tasks simultaneously, improving the efficiency of your scripts.
+
+Python and Jinja templates provide a powerful combination for automating complex tasks. By leveraging Python's advanced capabilities and the flexibility of Jinja templates, you can create dynamic, maintainable, and scalable automation scripts that go beyond the limitations of simple bash scripts.
+
+For more information on Jinja, visit the `Jinja Documentation <https://jinja.palletsprojects.com/en/3.1.x/intro/>`_.
+
+Example Python Script - Create Certificate
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Here is an example using Python and Jinja2:
+
+.. code-block:: python
+
+   import csv
+   import requests
+   from jinja2 import Template
+   
+   template = Template('''
+   {
+       "metadata": {
+           "name": "{{ name }}",
+           "namespace": "{{ namespace }}"
+       },
+       "spec": {
+           "certificate_url": "string:///{{ certificate_base64 }}",
+           "private_key": {
+               "blindfold_secret_info": {
+                   "location": "string:///{{ private_key_base64 }}"
+               }
+           }
+       }
+   }
+   ''')
+   
+   with open('data.csv') as csvfile:
+       reader = csv.DictReader(csvfile)
+       for row in reader:
+           payload = template.render(
+               name=row['name'],
+               namespace=row['namespace'],
+               certificate_base64=row['certificate_base64'],
+               private_key_base64=row['private_key_base64']
+           )
+           response = requests.post('https://acmecorp.console.ves.volterra.io/api/config/namespaces/ns1/certificates', data=payload)
+           print(response.status_code)
+
+This script reads from a CSV file, uses a Jinja template to format the data, and makes API calls with the `requests` library.
+
 Prototyping with Postman
 ------------------------
 
@@ -209,55 +282,6 @@ This collection is owned and maintained by F5 Professional Services and used for
 
 F5 Distributed Cloud - Professional Services Collections: https://www.postman.com/cloudy-astronaut-502658/workspace/f5-distributed-cloud-professional-services-collections/overview
 
-Advanced Python and Jinja Templates
------------------------------------
-
-As your automation needs grow, you might find bash scripts limiting. Python offers more advanced capabilities, 
-including the use of Jinja templates for dynamic content generation.
-
-* What is Jinja?  https://jinja.palletsprojects.com/en/3.1.x/intro/
-
-Example Python Script - Create Certificate
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Here is an example using Python and Jinja2:
-
-.. code-block:: python
-
-   import csv
-   import requests
-   from jinja2 import Template
-   
-   template = Template('''
-   {
-       "metadata": {
-           "name": "{{ name }}",
-           "namespace": "{{ namespace }}"
-       },
-       "spec": {
-           "certificate_url": "string:///{{ certificate_base64 }}",
-           "private_key": {
-               "blindfold_secret_info": {
-                   "location": "string:///{{ private_key_base64 }}"
-               }
-           }
-       }
-   }
-   ''')
-   
-   with open('data.csv') as csvfile:
-       reader = csv.DictReader(csvfile)
-       for row in reader:
-           payload = template.render(
-               name=row['name'],
-               namespace=row['namespace'],
-               certificate_base64=row['certificate_base64'],
-               private_key_base64=row['private_key_base64']
-           )
-           response = requests.post('https://acmecorp.console.ves.volterra.io/api/config/namespaces/ns1/certificates', data=payload)
-           print(response.status_code)
-
-This script reads from a CSV file, uses a Jinja template to format the data, and makes API calls with the `requests` library.
 
 CI/CD Pipelines
 ---------------
