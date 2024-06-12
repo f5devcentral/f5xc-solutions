@@ -26,6 +26,10 @@ This guide will cover:
 - CI/CD pipelines using tools like GitLab, Jenkins, and CircleCI
 - Infrastructure as code with Terraform
 
+.. note:: While Ansible is discussed here, its more so because it would be an oversight not to include it.  That said, 
+   F5 Distributed Cloud does not currently maintain a module or playbooks for Ansible.  There are some field supported examples
+   that may be included.
+
 Getting Started with F5 Distributed Cloud API
 ---------------------------------------------
 
