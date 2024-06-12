@@ -7,8 +7,6 @@
 BIG-IP To Distributed Cloud Conversion Frequently Asked Questions and Tips
 ==========================================================================
 
-.. _disclaimer:
-
 Disclaimer
 ----------
 
@@ -17,8 +15,6 @@ While we strive to provide accurate and up-to-date information, the rapidly evol
 F5 Distributed Cloud means that specific details may change over time. Therefore, this guide 
 should not be considered a substitute for professional advice or detailed consultation relevant 
 to your specific circumstances.
-
-.. _introduction:
 
 Introduction
 ------------
@@ -33,8 +29,6 @@ Contributing
 Please feel free to submit issues or updates to the repo listed below.  
 
 Github: https://github.com/f5devcentral/f5xc-solutions
-
-.. _disqualifiers:
 
 Disqualifiers
 -------------
@@ -101,6 +95,11 @@ Cloud & Platform Support
 
   * Image: https://docs.cloud.f5.com/docs/images/node-vmware-images
   * How To: https://docs.cloud.f5.com/docs/how-to/site-management/create-vmw-site
+|
+- **Red Hat OpenShift**: OCP is supported out of the box Manual deployments.
+
+  * How To - k8s: https://docs.cloud.f5.com/docs/integrations/integrating-cloud-mesh-with-ocp
+  * How To - kubevirt: working...
 |
 - **ProxMox**: ProxMox is supported out of the box Manual and Terraform based deployments.
 
@@ -1077,6 +1076,14 @@ ACCESS_SESSION_STARTED, ACCESS_POLICY_AGENT_EVENT, ACCESS_POLICY_COMPLETED, ACCE
 Since these are all APM iRules events, they are not supported in XC.  What we can do is evaluate incoming headers; MRH_Session, www-authenticate, etc., and make decisions on traffic. 
 
 An Example of filtering unauthenticated traffic would be to create a route and filter on Authorization Header exists, or 401 Error from Upstream, and then provide a custom error page:
+
+In Distributed Cloud Console, I would adjust the Custom Error Response settings in the load balancer and use the code below.
+
+.. figure:: ./images/picture6.png
+   :width: 700px
+   :align: center
+
+   Distributed Cloud Load Balancer Custom Error
 
 .. code-block:: html
 
