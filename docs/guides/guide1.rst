@@ -1079,7 +1079,7 @@ An Example of filtering unauthenticated traffic would be to create a route and f
 
 In Distributed Cloud Console, I would adjust the Custom Error Response settings in the load balancer and use the code below.
 
-.. figure:: ./images/picture6.png
+.. figure:: ./images/customerror1.png
    :width: 700px
    :align: center
 
