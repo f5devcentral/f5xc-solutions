@@ -202,7 +202,7 @@ After validating your API models with Postman, consider transitioning to tools b
 - **Ansible**: Excellent for configuration management and application deployment.
 - **CI/CD Tools**: Integrate with Jenkins, GitLab, or CircleCI to automate your build, test, and deployment processes.
 
-Example Postman Collection for Severl XC Tasks
+Example Postman Collection for Several XC Tasks
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This collection is owned and maintained by F5 Professional Services and used for customer deployments.
