@@ -1048,6 +1048,11 @@ If the irule also does Host rewrites to the upstream, or path rewriting, this is
    :width: 700px
    :align: center
 
+
+Another very common example, and maybe the first irule many learn, is to evaluate the file extention in the request, and redirect traffic to a CDN Cache or static file pool.
+
+
+
 HTTP_REQUEST_DATA 
 ^^^^^^^^^^^^^^^^^
 
