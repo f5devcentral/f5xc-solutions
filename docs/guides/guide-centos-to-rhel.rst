@@ -38,3 +38,38 @@ and will route traffic to the endpoint per the LB algorithm.
    :align: center
 
 Also the Virtual Site construct can be utilized for more advanced HA design scenarios and even for additional bandwidth between RE and CE, but this will be discussed in other articles.
+
+Virtual Site Setup
+------------------
+A prerequisite to creating a virtual site for this conversion we would need 2 Customer Edge sites (one centos and the other rhel) that have network access to the origin pools one discovering the endpoints.
+First we start to setup the virtual site construct by logging into our Distributed Cloud tenant.  
+Once logged in:
+   * Navigate to "Shared Configuration"
+   * Under "Manage" chose "Virtual Site"
+   * Add Virtual Site
+   .. figure:: ./images/add-virt-site.png
+    :align: center
+   * Provide a Name, Description, Site Type being Used “CE”, and Site Reg Expression
+   .. figure:: ./images/create-reg-expression.png
+    :align: center
+   * My example is key:value is (netta-as-vsite in true)
+   * Next we will Add Virtual Site Label to Existing CE Cluster Sites (centos and rhel)
+   * Go to Multi-Cloud Network Connect
+   * Go to site management ("Site Management" will depend on how you deployed the site initally.  it could be a Generic Site, Cloud Deployment site, or Secure Mesh Site) once in the correct management object click on the 3 ellipses at the right and go to manage your site.
+   .. figure:: ./images/manage-site.png
+    :align: center
+   * Right hand corner Edit Configuration
+   .. figure:: ./images/edit-config.png
+    :align: center
+   * Add virtual Site Label
+   .. figure:: ./images/add-label.png
+    :align: center 
+   * Type in the Key from “Site Selector Expression” my example is ”netta-az-vsite” and click Assign a Custom Key (netta-az-vsite)
+   .. figure:: ./images/add-key.png
+    :align: center
+   * Type in Value from “Site Selector Expression” my example is ”true” and click Assign a Custom Value (true)
+   .. figure:: ./images/add-value.png
+    :align: center
+
+
+
