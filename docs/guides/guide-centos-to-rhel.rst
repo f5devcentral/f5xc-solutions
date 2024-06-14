@@ -107,5 +107,17 @@ Now that we have the virtual site and the proper origin pool discovery method bu
    * Remove the original Centos Site origin pool form the HTTP LB
    * Delete the Centos Cluster
 
+Additional Information
+----------------------
+In the above example for the Customer Edge (CE) deployment we were leveraging the RE's to publish VIPs to the internet 
+and the CE's were used as tunnel termination points as well as SNAT to origin members.
+If you move the VIP to the CE there are a few caveats with the way to advertise that VIP to the network.  
+For example in order to leverage all nodes within the cluster you will need to provide a VIP Advertisement policy that consisted of an out of band DNS LB option or nested LB option.
 
+Also as mentioned earlier in this article there can also be HA and bandwidth advantages to leveraging virtual sites as depicted below in the last slide.
+
+   .. figure:: ./images/add-info.png
+    :align: center
+
+For more info on the migration process or CE design options reach out to your F5 Distributed Cloud Specialists
 
