@@ -19,6 +19,6 @@ pattern (option #2 in image below) where the VIP is on the Regional Edge and the
 While we are using this deployment pattern as an example the concepts for other patterns are the same with a few caveats which will be included 
 at the end of this article.
 
-.. figure:: ./images/f5xc-deployment-model.png
+.. figure:: ./images/f5xc-deployment-models.png
    :width: 500px
    :align: center
