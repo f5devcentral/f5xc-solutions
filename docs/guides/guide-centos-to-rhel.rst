@@ -71,5 +71,8 @@ Once logged in:
    .. figure:: ./images/add-value.png
     :align: center
 
+Proceed with these steps to all sites that will become members of this virtual site.
 
+High Level Concepts
+-------------------
 
