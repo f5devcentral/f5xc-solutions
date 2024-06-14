@@ -71,8 +71,30 @@ Once logged in:
    .. figure:: ./images/add-value.png
     :align: center
 
-Proceed with these steps to all sites that will become members of this virtual site.
+Proceed with these steps for all sites that will become members of this virtual site.
 
-High Level Concepts
+Virtual Site Origin Pool Configuration and Validation of Virtual Site Endpoint Discovery
 -------------------
+Now that we have our virtual site configured we need to configure the origin pool and perform discovery of the endpoints from the virtual site.
+
+   * Navigate to "Multi-Cloud Application Connect" title
+   * Go to Manage- Load Balancers- Origin pools
+   .. figure:: ./images/origin-pool-config.png
+    :align: center
+   * In origin pool configuration choose the discovery method (typically IP or DNS but other options are available) of Origin on given sites
+   
+   * Under Site or Virtual Site choose Virtual Site and pick your virtual site from drop down menu (my example is the key of the regular expression we created earlier "netta-az-vsite")
+   .. figure:: ./images/vsite-selection.png
+    :align: center
+
+   * Rest of origin pool config should be the same as the existing non virtual site origin pool
+
+Validation
+----------
+In this step we will validate the origin pool is healthy from the virtual site.
+   * Go to HTTP LB Performance
+   * Click on Origins Servers and you should see 2 origins one form each site making up the virtual site (my examples are netta-vsiteclus1 and nettavsiteclus2)
+   .. figure:: ./images/origin-healthy.png
+    :align: center
+
 
