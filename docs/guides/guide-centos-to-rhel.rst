@@ -82,7 +82,7 @@ Now that we have our virtual site configured we need to configure the origin poo
    .. figure:: ./images/origin-pool-config.png
     :align: center
    * In origin pool configuration choose the discovery method (typically IP or DNS but other options are available) of Origin on given sites
-   
+
    * Under Site or Virtual Site choose Virtual Site and pick your virtual site from drop down menu (my example is the key of the regular expression we created earlier "netta-az-vsite")
    .. figure:: ./images/vsite-selection.png
     :align: center
@@ -96,5 +96,16 @@ In this step we will validate the origin pool is healthy from the virtual site.
    * Click on Origins Servers and you should see 2 origins one form each site making up the virtual site (my examples are netta-vsiteclus1 and nettavsiteclus2)
    .. figure:: ./images/origin-healthy.png
     :align: center
+
+Migration
+---------
+Now that we have the virtual site and the proper origin pool discovery method built we can start the migration.
+
+   * Go to the HTTP LB and add the additional virtual site origin pool under the Origins section
+   * Leverage weights and Priorities with the 2 origin pools to start the migration from the Centos Site to the Virtual site origin pool.  Typical starting point is both origin pools will have a Priority of 1 and Weight will be in a value to equal 100.  SO Centos origin pool have a weight of 95 and Virtual Site Origin Pool 5 and decrement and increment both as you migrate.
+   * Once 100% of traffic is on the Virtual site origin pool remove the Virtual Site label from the centos site
+   * Remove the original Centos Site origin pool form the HTTP LB
+   * Delete the Centos Cluster
+
 
 
