@@ -22,3 +22,20 @@ at the end of this article.
 .. figure:: ./images/f5xc-deployment-models.png
    :width: 500px
    :align: center
+
+High Level Concepts
+-------------------
+Before we discuss the migration phases I want to introduce a few concepts that we will be utilizing.  The first concept is what we call a Virtual Site.  
+A virtual Site provides us the ability to perform a given configuration on set (or group) of Sites.  The second term is Origin Pool.  
+An origin pool is a mechanism to configure a set of endpoints grouped together into a resource pool used in the load balancer configuration.
+
+The typical CE Site deployment consists of a HA cluster that discovers endpoints via a origin pool picked via the CE Site.
+This discovery is typically via Private DNS or RFC-1918 IP ranges all though other methods are available.  
+When we introduce the virtual site construct we will perform this discovery via a "Virtual Site" and not the original "CE Site".
+As depicted below on the right hand side of the drawing you will see the origin pool is now discovered from all 6 nodes in the virtual site 
+and will route traffic to the endpoint per the LB algorithm.  
+
+.. figure:: ./images/site-vs-virtual-site.png 
+   :align: center
+
+Also the Virtual Site construct can be utilized for more advanced HA design scenarios and even for additional bandwidth between RE and CE, but this will be discussed in other articles.
