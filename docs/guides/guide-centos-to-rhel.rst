@@ -17,7 +17,8 @@ Prior to that the Customer Edge ran on Centos 7.x Operating System which has bee
 The goal of this guide is to provide a migration strategy from Centos to RHEL OS for customer edge sites that are in a SaaS-Hybrid Edge Deployment
 pattern (#2 in the digram below) where the VIP is on the Regional Edge and the tunnel termination and SNAT are on the customer edge.  
 While we are using this deployment pattern as an example the concepts for other patterns are the same with a few caveats which will be included 
-at the end of this article. 
+at the end of this article.
+
 #. 
    .. image:: ./images/f5xc_deployment_models.png
       :align: center
