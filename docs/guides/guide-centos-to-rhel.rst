@@ -55,7 +55,7 @@ Once logged in:
    * My example is key:value is (netta-as-vsite in true)
    * Next we will Add Virtual Site Label to Existing CE Cluster Sites (centos and rhel)
    * Go to Multi-Cloud Network Connect
-   * Go to site management ("Site Management" will depend on how you deployed the site initally.  it could be a Generic Site, Cloud Deployment site, or Secure Mesh Site) once in the correct management object click on the 3 ellipses at the right and go to manage your site.
+   * Go to site management ("Site Management" will depend on how you deployed the site initally.  it could be a Generic Site, Cloud Deployment site, or Secure Mesh Site) once in the correct management object click on the 3 ellipses at the right and go to Manage Configuration.
    .. figure:: ./images/manage-site.png
     :align: center
    * Right hand corner Edit Configuration
