@@ -20,7 +20,6 @@ While we are using this deployment pattern as an example the concepts for other 
 at the end of this article.
 
 .. figure:: ./images/f5xc-deployment-models.png
-   :width: 500px
    :align: center
 
 High Level Concepts
