@@ -1,7 +1,10 @@
 .. meta::
    :description: F5 Distributed Customer Edge Deployment Proxmox
    :keywords: f5, Distributed Cloud, Proxmox
-
+   :category: Field-Sourced-Content
+   :sub-category: how-to
+   :author: Michael Coleman
+   
 .. _manual-proxmox-deployment:
 
 Deploy F5 Distributed Cloud Customer Edge on ProxMox

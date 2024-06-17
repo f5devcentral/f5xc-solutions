@@ -1,7 +1,10 @@
 .. meta::
    :description: Getting Started with Distributed Cloud Automation
    :keywords: F5, Distributed Cloud, Automation, Terraform
-
+   :category: Field-Sourced-Content
+   :sub-category: how-to
+   :author: Michael Coleman
+   
 .. _getting-started-cloud-automation:
 
 Getting Started with Distributed Cloud Automation

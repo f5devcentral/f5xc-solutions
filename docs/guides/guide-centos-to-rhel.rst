@@ -1,7 +1,10 @@
 .. meta::
    :description: F5 Distributed Cloud Customer Edge Centos to RHEL OS Conversion Example
    :keywords: F5, Distributed Cloud, Customer Edge, Centos, RHEL, 
-
+   :category: Field-Sourced-Content
+   :sub-category: how-to
+   :author: Michael Coleman
+   
 .. _ce_os_migration-centos_to_rhel:
 
 Distributed Cloud Customer Edge Centos to RHEL OS Migration

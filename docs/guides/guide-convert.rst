@@ -1,6 +1,9 @@
 .. meta::
    :description: F5 BIG-IP to Distributed Cloud Conversion Guide and Tips
    :keywords: BIG-IP, Conversion, Distributed Cloud, WAAP, API, Proxy Protocol
+   :category: Field-Sourced-Content
+   :sub-category: how-to
+   :author: Michael Coleman
 
 .. _conversion-guide:
 
@@ -8,7 +11,7 @@ BIG-IP To Distributed Cloud Conversion Frequently Asked Questions and Tips
 ==========================================================================
 
 Disclaimer
-----------
+~~~~~~~~~~
 
 Please note that this FAQ document is intended as a general guide and is not exhaustive. 
 While we strive to provide accurate and up-to-date information, the rapidly evolving nature of 
@@ -17,7 +20,7 @@ should not be considered a substitute for professional advice or detailed consul
 to your specific circumstances.
 
 Introduction
-------------
+~~~~~~~~~~~~
 
 This semi-comprehensive guide is designed to streamline your migration from F5 BIG-IP to F5 Distributed Cloud.  
 This document aims to address frequently asked questions that arise during the migration process, offering clear, 
