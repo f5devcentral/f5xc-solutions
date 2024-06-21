@@ -1260,7 +1260,7 @@ If you decide to enable VRRP for a cluster, the following should be evaluated to
 Troubleshooting
 ---------------
 
-In some cases, for troubleshooting, tt can help to turn off XC Default Error Messages and allow errors directly from the Upstream.
+In some cases, for troubleshooting, it can help to turn off XC Default Error Messages and allow errors directly from the Upstream.
 
 .. image:: ./images/customerror2.png
    :width: 700px
