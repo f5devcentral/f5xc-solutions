@@ -690,6 +690,17 @@ SNAT
 Distributed Cloud is a SaaS Platform.  BIG-IP is not.  Some applications may be configured to accept client source for persistence or other purposes.  Since the traffic will be proxied, applications been to be enabled for a more modern approach.
 
 
+Clone Pool to Mirroring
+^^^^^^^^^^^^^^^^^^^^^^^
+
+Many customers use either a clone pool config or an irule to clone/mirror traffic on BIG-IP.  This config is called mirroring on Distributed Cloud and can be configured within an HTTP LoadBalancer Route.
+
+.. image:: ./images/mirror.png
+   :width: 700px
+   :align: center
+
+Mirroring is used for shadowing traffic from one cluster to another. The approach used is "fire and forget", meaning it will not wait for the shadow cluster to respond before returning the response from the primary cluster. All normal statistics are collected for the shadow cluster making this feature useful for testing and troubleshooting. During mirroring, the host/authority header is altered such that *-shadow* is appended.
+
 LTM to Customer Edge
 ^^^^^^^^^^^^^^^^^^^^
 
