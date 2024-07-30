@@ -1,0 +1,20 @@
+div.section table, td
+{
+  white-space: normal !important;  
+}
+
+div.section tbody, tr, td
+{
+  border: 1px; 
+}
+
+div.section thead, th
+{
+  color: #FFFFFF;
+  background-color: #4472C4;    
+}
+
+div.section tr.row-odd
+{
+  background-color: #D9E2F3;  
+}
