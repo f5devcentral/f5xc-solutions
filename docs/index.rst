@@ -16,14 +16,15 @@ Solutions, Guides & Documentation
    info/info*
    guides/guide*
 
-Code & Automation Examples 
----------------------------
+..
+   Code & Automation Examples 
+   ---------------------------
 
-.. toctree::
-   :maxdepth: 1
-   :glob:
+   .. toctree::
+      :maxdepth: 1
+      :glob:
    
-   code/api/api*
-   code/terraform/terraform*
-   code/postman/postman*
+      code/api/api*
+      code/terraform/terraform*
+      code/postman/postman*
 
