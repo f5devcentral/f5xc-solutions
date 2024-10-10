@@ -9,6 +9,13 @@
    
 .. _lb-dns-config:
 
+Introduction
+================================
+
+This document outlines the three primary methods customers can use to configure DNS settings to point to our cloud load balancers. 
+It also highlights which options provide support for automatic certificate management. 
+Understanding these methods is critical for ensuring seamless traffic routing and securing connections with managed certificates, enabling efficient and secure load balancing in XC.
+
 Configuring DNS Delegation to XC
 ================================
 
