@@ -21,9 +21,8 @@ Minimun requirements needed for this environment:
    * Im using a Distributed Cloud Site configured with the Secure Mesh Site Version 2 (SMSv2).  You can use a general site or SMSv1 Legacy Site as well.
 
 
-Step-by-Step Approach
+Step-by-Step Guidance
 --------------------------
-Approach will be the following:
 
    * Origin Pool Settings
    * Routes
