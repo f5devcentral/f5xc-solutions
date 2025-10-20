@@ -10,6 +10,6 @@
 Distributed Cloud HTTP-LB Recommended Settings
 =====================================================================================
 
-This repo will provide a guide and how to configurations to configure an HTTP-LB with some recommended settings from field teams that have worked with customers to deploy thousands of HTTP LB's 
-and related objects including but not limited to security.
+This repo will provide a guide and how to configurations for an HTTP-LB with recommended settings from field teams that have worked with customers to deploy thousands of HTTP LB's 
+and related objects includingsetting for origin pools, health checks, base security, timeouts, etc...
 
