@@ -26,6 +26,7 @@ Step-by-Step Guidance
 --------------------------
 
    * Origin Pool Settings
+   * Health Checks
    * Routes
    * Web Application Firewall
    * DoS Settings
