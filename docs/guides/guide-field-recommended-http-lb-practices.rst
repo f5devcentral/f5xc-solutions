@@ -12,7 +12,7 @@ Distributed Cloud HTTP-LB Field Recommended Settings
 
 This article is a work in progress
 
-This aritcle will provide guidance and configurations for a base HTTP-LB with recommended settings from field teams that have worked with customers to deploy thousands of HTTP LB's 
+This aritcle will provide guidance and configurations for a base HTTP-LB setup with recommended settings from field teams that have worked with customers to deploy thousands of HTTP LB's 
 and related objects includingsetting for origin pools, health checks, base security, timeouts, etc...
 
 Step-by-Step Guidance
