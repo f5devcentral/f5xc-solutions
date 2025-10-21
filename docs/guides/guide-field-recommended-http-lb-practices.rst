@@ -13,12 +13,15 @@ Distributed Cloud HTTP-LB Field Recommended Settings
 Guide is a Work In Progress
 --------------------------
 
-This aritcle will provide guidance and configurations for a base HTTP-LB setup with recommended settings from field teams that have worked with customers to deploy thousands of HTTP LB's 
-and related objects includingsetting for origin pools, health checks, base security, timeouts, etc...
+This document ovides guidance configuration recommendations for establishing a foundational HTTP Load Balancer (HTTP-LB) setup.  The suggested settings are based on
+best practices gathered from field teams with extensive experience deploying HTTP-LBs and releated components, including certificates, origin pools, health checks, baseline 
+security and more.  While not an exhaustive nfiguration guide this document serves as a starting point to support Proof of Value intiatives or customer inital deployments of HTTP-LB.
+Customers are encouraged to customize and adapt these recommendations to meet their specific requirements and deployment scenarios.
 
 Covered Topics:
 --------------------------
 
+   * Domains and Certificate
    * Origin Pool Settings
    * Health Checks
    * Routes
@@ -26,6 +29,11 @@ Covered Topics:
    * DoS Settings
    * Common Security Controls
    * Other Settings
+
+Domains and Certificates:
+---------------------------
+
+
 
 Origin Pool:
 ---------------------------
