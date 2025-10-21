@@ -13,6 +13,9 @@ Distributed Cloud HTTP-LB Field Recommended Settings
 Guide is a Work In Progress
 --------------------------
 
+Introduction
+--------------------------
+
 This document ovides guidance configuration recommendations for establishing a foundational HTTP Load Balancer (HTTP-LB) setup.  The suggested settings are based on
 best practices gathered from field teams with extensive experience deploying HTTP-LBs and releated components, including certificates, origin pools, health checks, baseline 
 security and more.  While not an exhaustive nfiguration guide this document serves as a starting point to support Proof of Value intiatives or customer inital deployments of HTTP-LB.
