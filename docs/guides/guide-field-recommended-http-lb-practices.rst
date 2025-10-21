@@ -44,8 +44,8 @@ Base Settings for Domains:
    * Can have up to 32 Domains Per HTTP-LB
    * Wildcard prefix is supported (example in picture above)
    * SAN Certificates are supported
-   * Auto Certificate utilizes Let's Encrypt for a Primary Domain Delegated to Distributed Cloud DNS.  Also option for user managed DNS.  Customer needs to buildout the challenge record manually in DNS or build automation.
-   
+   * Auto Certificate utilizes Let's Encrypt for a Primary Domain Delegated to Distributed Cloud DNS.  Also option for Auto Certificate with user managed DNS.  Customer needs to buildout the challenge record manually in DNS or build automation.
+
 
 
 Origin Pool:
