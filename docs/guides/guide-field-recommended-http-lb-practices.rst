@@ -35,7 +35,11 @@ Covered Topics:
 
 Domains and Certificates:
 ---------------------------
+Below is a screen shot of the base options for an HTTP LB
+.. figure:: ./images/recommended_practices/domains_certs.png
+   :align: center
 
+Domains and Certificate for a PoV typically utilize the Auto Certificate option within F5 Distributed Cloud.  In order to set this up 
 
 
 Origin Pool:
