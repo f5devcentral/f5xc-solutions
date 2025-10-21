@@ -40,7 +40,7 @@ Below is a screen shot of the base options for an "HTTP LB Domains and LB Type" 
 .. figure:: ./images/recommended_practices/domains_certs.png
    :align: center
 
-Domains and Certificate for a PoV typically utilize the Auto Certificate option within F5 Distributed Cloud.  In order to set this up 
+Domains and Certificate for a PoV typically utilize the Auto Certificate option within F5 Distributed Cloud.  
 
 
 Origin Pool:
