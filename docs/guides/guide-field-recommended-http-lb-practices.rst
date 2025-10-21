@@ -35,16 +35,16 @@ Covered Topics:
 
 Domains and Certificates:
 ---------------------------
-Below is a screen shot of the base options for an "HTTP LB Domains and LB Type" Object.
+Below is a screen shot of the options for an "HTTP LB Domains and LB Type" Object.
 
 .. figure:: ./images/recommended_practices/domains_certs.png
    :align: center
 
-Base Settings for Domains:
+Options and Settings for Domains:
    * Can have up to 32 Domains Per HTTP-LB
    * Wildcard prefix is supported (example in picture above)
    * SAN Certificates are supported
-   * Auto Certificate utilizes Let's Encrypt for a Primary Domain Delegated to Distributed Cloud DNS.  Also option for Auto Certificate with user managed DNS.  Customer needs to buildout the challenge record manually in DNS or build automation.
+   * Auto Certificate utilizes Let's Encrypt for a Primary Domain Delegated to Distributed Cloud DNS.  There is an option for Auto Certificate with user managed DNS.  Customer needs to buildout the challenge record manually in their DNS or build any automation they prefer.
 
 Typical PoV Settings:
 
