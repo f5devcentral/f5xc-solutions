@@ -38,7 +38,7 @@ an origin pool is responsible for is the following:
    * Health Checks for Endpoints
    * TLS Capabilities to Endpoints
 
-* `F5 XC Creating Origin Pool <https://docs.cloud.f5.com/docs-v2/multi-cloud-app-connect/how-to/create-manage-origin-pools>`_
+* `F5 XC Creating Origin Pool <https://docs.cloud.f5.com/docs-v2/multi-cloud-app-connect/how-to/create-manage-origin-pools>`_.
 
 
 
