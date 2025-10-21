@@ -35,7 +35,7 @@ Covered Topics:
 
 Domains and Certificates:
 ---------------------------
-Below is a screen shot of the base options for an HTTP LB
+Below is a screen shot of the base options for an "HTTP LB Domains and LB Type" Object
 
 .. figure:: ./images/recommended_practices/domains_certs.png
    :align: center
