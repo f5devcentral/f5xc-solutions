@@ -17,8 +17,8 @@ Introduction
 --------------------------
 
 This document provides guidance configuration recommendations for establishing a foundational HTTP Load Balancer (HTTP-LB) setup.  The suggested settings are based on
-best practices gathered from field teams with extensive experience deploying HTTP-LBs and releated components, including certificates, origin pools, health checks, baseline 
-security and more.  While not an exhaustive nfiguration guide this document serves as a starting point to support Proof of Value intiatives or customer inital deployments of HTTP-LB.
+best practices gathered from field teams with extensive experience deploying HTTP-LBs and releated components within customer environments for PoV purposes or establishing a baseline deployment model.
+Whilethis is not an exhaustive configuration guide this document serves as a starting point to support customers in their Distributed Cloud journey and inital deployments of HTTP-LB.
 Customers are encouraged to customize and adapt these recommendations to meet their specific requirements and deployment scenarios.
 
 Covered Topics:
