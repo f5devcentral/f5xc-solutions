@@ -27,5 +27,19 @@ Step-by-Step Guidance
    * Common Security Controls
    * Other Settings
 
+Origin Pool:
+---------------------------
+
+Origin Pool is a mechanism to configure a set of endpoints grouped together into a resource pool used in the load balancer configuration.  The main functions that 
+an origin pool is responsible for is the following:
+
+   * Discovery of Endpoints
+   * Load Balancing Between Endpoints
+   * Health Checks for Endpoints
+   * TLS Capabilities to Endpoints
+
+
+
+
 
 
