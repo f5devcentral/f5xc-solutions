@@ -35,12 +35,17 @@ Covered Topics:
 
 Domains and Certificates:
 ---------------------------
-Below is a screen shot of the base options for an "HTTP LB Domains and LB Type" Object
+Below is a screen shot of the base options for an "HTTP LB Domains and LB Type" Object.
 
 .. figure:: ./images/recommended_practices/domains_certs.png
    :align: center
 
-Domains and Certificate for a PoV typically utilize the Auto Certificate option within F5 Distributed Cloud.  
+Base Settings for Domains:
+   * Can have up to 32 Domains Per HTTP-LB
+   * Wildcard prefix is supported (example in picture above)
+   * SAN Certificates are supported
+   * Auto Certificate utilizes Let's Encrypt for a Primary Domain Delegated to Distributed Cloud DNS.  Also option for user managed DNS.  Customer needs to buildout the challenge record manually in DNS or build automation.
+   
 
 
 Origin Pool:
