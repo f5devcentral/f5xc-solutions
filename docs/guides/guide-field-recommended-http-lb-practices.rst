@@ -49,7 +49,7 @@ Options and Settings for Domains:
    * SAN Certificates are supported
    * Auto Certificate utilizes Let's Encrypt for a Primary Domain Delegated to Distributed Cloud DNS.  There is an option for Auto Certificate with user managed DNS.  Customer needs to buildout the challenge record manually in their DNS or build any automation they prefer.
 
-Typical PoV Settings Below for :
+Typical Domain and Certificate Settings for a PoV:
 
 .. figure:: ./images/recommended_practices/domains_certs_pov_settings.png
    :align: center
@@ -79,4 +79,9 @@ Origin Pools have many options as you can see in the few pictures below.
 
 .. figure:: ./images/recommended_practices/origin_tls.png
    :align: center
+
+
+Typical Domain and Certificate Settings for a PoV:
+
+
 
