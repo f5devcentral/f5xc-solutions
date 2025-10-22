@@ -50,6 +50,7 @@ Client Side TLS High setting, both HTTP/1.1 and 2 Protocol
    :align: center
 
 Origin Pool:
+
 Set a name and configure the Origin Discovery.  Recommended to use IP in this example we are using a public IP Address, Connection Pool Reuse, Same Health Check Port as Origin, 
 Accept the Load Balancing Algorithim, Local Endpoints Preffered, and Server Side TLS options as Host Header.
 
