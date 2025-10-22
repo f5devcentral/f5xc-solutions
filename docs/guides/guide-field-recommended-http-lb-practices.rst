@@ -72,8 +72,10 @@ Origin Pools have many options as you can see in the few pictures below.
 .. figure:: ./images/recommended_practices/origin_settings.png
    :align: center
 
+
 .. figure:: ./images/recommended_practices/origin_discovery.png
    :align: center
+
 
 .. figure:: ./images/recommended_practices/origin_tls.png
    :align: center
