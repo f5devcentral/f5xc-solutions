@@ -21,6 +21,9 @@ practices gathered from field teams with extensive experience deploying HTTP-LBs
 Since this is not an exhaustive configuration guide it should be utilized as a starting point to support customers in their Distributed Cloud journey and inital deployments of HTTP-LB.
 Customers are encouraged to customize and adapt these recommendations to meet their specific requirements and deployment scenarios.
 
+.. figure:: ./images/recommended_practices/http_lb_intro.png
+   :align: center
+
 Covered Topics:
 --------------------------
 
@@ -32,10 +35,6 @@ Covered Topics:
    * DoS Settings
    * Common Security Controls
    * Other Settings
-
-.. figure:: ./images/recommended_practices/http_lb_intro.png
-   :align: center
-
 
 Domains and Certificates:
 ---------------------------
