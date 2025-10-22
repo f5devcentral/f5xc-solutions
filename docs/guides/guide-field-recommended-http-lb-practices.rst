@@ -33,9 +33,13 @@ Covered Topics:
    * Common Security Controls
    * Other Settings
 
+.. figure:: ./images/recommended_practices/http_lb_intro.png
+   :align: center
+
+
 Domains and Certificates:
 ---------------------------
-Below is a screen shot of the options for an "HTTP LB Domains and LB Type" Object.
+Below is a screen shot of the options for an "HTTP LB Domains and LB Type" settings.
 
 .. figure:: ./images/recommended_practices/domains_certs.png
    :align: center
@@ -46,7 +50,7 @@ Options and Settings for Domains:
    * SAN Certificates are supported
    * Auto Certificate utilizes Let's Encrypt for a Primary Domain Delegated to Distributed Cloud DNS.  There is an option for Auto Certificate with user managed DNS.  Customer needs to buildout the challenge record manually in their DNS or build any automation they prefer.
 
-Typical PoV Settings:
+Typical PoV Settings Below for :
 
 .. figure:: ./images/recommended_practices/domains_certs_pov_settings.png
    :align: center
