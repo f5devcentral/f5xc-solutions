@@ -41,6 +41,9 @@ Recommended HTTP-LB PoV Settings:
 ---------------------------
 
 Domains and Certificates:
+Dependent on client application, but for a PoV the follwoing settings are the most common.  Utilize Auto-Cert capability for domain and certificate, add the HTTP Redirect to HTTPS,  add HSTS Header, Listener Port 443, 
+Client Side TLS High setting, both HTTP/1.1 and 2 Protocol
+
 
 .. figure:: ./images/recommended_practices/domains_certs_pov_settings.png
    :align: center
@@ -48,9 +51,6 @@ Domains and Certificates:
 Origin Pool:
 Set a name and configure the Origin Discovery.  Recommended to use IP in this example we are using a public IP Address, Connection Pool Reuse, Same Health Check Port as Origin, 
 Accept the Load Balancing Algorithim, Local Endpoints Preffered, and Server Side TLS options as Host Header.
-
-.. figure:: ./images/recommended_practices/origin_pool_config.png
-   :align: center
 
 .. figure:: ./images/recommended_practices/origin_servers_config.png
    :align: center
