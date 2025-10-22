@@ -67,7 +67,14 @@ an origin pool is responsible for is the following:
 
 * `F5 XC Creating Origin Pool <https://docs.cloud.f5.com/docs-v2/multi-cloud-app-connect/how-to/create-manage-origin-pools>`_.
 
+Origin Pools have many options as you can see in the few pictures below.
 
+.. figure:: ./images/recommended_practices/origin_settings.png
+   :align: center
 
+.. figure:: ./images/recommended_practices/origin_discovery.png
+   :align: center
 
+.. figure:: ./images/recommended_practices/origin_tls.png
+   :align: center
 
