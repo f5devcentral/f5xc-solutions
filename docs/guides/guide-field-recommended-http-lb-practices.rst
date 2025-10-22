@@ -27,6 +27,7 @@ Customers are encouraged to customize and adapt these recommendations to meet th
 Covered Topics:
 --------------------------
 
+   * Recomended Settings (TLDR Version)
    * Domains and Certificate
    * Origin Pool Settings
    * Health Checks
@@ -35,6 +36,30 @@ Covered Topics:
    * DoS Settings
    * Common Security Controls
    * Other Settings
+
+Recommended HTTP-LB PoV Settings:
+---------------------------
+
+Domains and Certificates:
+
+.. figure:: ./images/recommended_practices/domains_certs_pov_settings.png
+   :align: center
+
+Origin Pool:
+Set a name and configure the Origin Discovery.  Recommended to use IP in this example we are using a public IP Address, Connection Pool Reuse, Same Health Check Port as Origin, 
+Accept the Load Balancing Algorithim, Local Endpoints Preffered, and Server Side TLS options as Host Header.
+
+.. figure:: ./images/recommended_practices/origin_pool_config.png
+   :align: center
+
+.. figure:: ./images/recommended_practices/origin_servers_config.png
+   :align: center
+
+.. figure:: ./images/recommended_practices/server_side_tls.png
+   :align: center
+
+
+
 
 Domains and Certificates:
 ---------------------------
