@@ -40,7 +40,7 @@ Covered Topics:
 Recommended HTTP-LB PoV Settings:
 ---------------------------
 
-.. note:: Domains and Certificates:
+.. note:: Domains and Certificates: This section will provide the typical setup for a PoV with domains and certificates
 
 Dependent on client application, but for a PoV the follwoing settings are the most common.  Utilize Auto-Cert capability for domain and certificate, add the HTTP Redirect to HTTPS,  add HSTS Header, Listener Port 443, 
 Client Side TLS High setting, both HTTP/1.1 and 2 Protocol
