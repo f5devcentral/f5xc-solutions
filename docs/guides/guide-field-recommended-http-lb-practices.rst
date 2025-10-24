@@ -62,6 +62,8 @@ Accept the Load Balancing Algorithim, Local Endpoints Preffered, and Server Side
 .. figure:: ./images/recommended_practices/server_side_tls.png
    :align: center
 
+.. note:: Health Check:
+
 
 
 
@@ -83,34 +85,7 @@ Typical Domain and Certificate Settings for a PoV:
 .. figure:: ./images/recommended_practices/domains_certs_pov_settings.png
    :align: center
 
-Origin Pool:
----------------------------
 
-Origin Pool is a mechanism to configure a set of endpoints grouped together into a resource pool used in the load balancer configuration.  The main functions that 
-an origin pool is responsible for is the following:
-
-   * Discovery of Endpoints
-   * Load Balancing Between Endpoints
-   * Health Checks for Endpoints
-   * TLS Capabilities to Endpoints
-
-* `F5 XC Creating Origin Pool <https://docs.cloud.f5.com/docs-v2/multi-cloud-app-connect/how-to/create-manage-origin-pools>`_.
-
-Origin Pools have many options as you can see in the few pictures below.
-
-.. figure:: ./images/recommended_practices/origin_settings.png
-   :align: center
-
-
-.. figure:: ./images/recommended_practices/origin_discovery.png
-   :align: center
-
-
-.. figure:: ./images/recommended_practices/origin_tls.png
-   :align: center
-
-
-Typical Domain and Certificate Settings for a PoV:
 
 
 
